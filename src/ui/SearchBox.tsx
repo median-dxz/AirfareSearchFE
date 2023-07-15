@@ -7,16 +7,16 @@ import FlightRouteGroup from "./FlightRoute/FlightRouteGroup";
 
 export default function SearchBox() {
   return (
-    <div className="container relative w-full mx-auto my-[-3rem] flex flex-col items-center space-y-2">
-      <div className="min-h-[4rem] relative bg-white rounded drop-shadow-xl">
+    <div id="search-box" className="container relative w-full mx-auto my-[-3rem] flex flex-col items-center space-y-2">
+      <div className="min-h-[4rem] w-full relative bg-white rounded drop-shadow-xl flex flex-col">
         <FlightRouteBase />
-        <Divider />
+        <Divider className={"my-2"} />
         <FlightRouteGroup />
       </div>
       <Button className="flex items-center justify-around" color="primary">
         <SearchIcon height={24} />
         <span className="mx-2">搜索</span>
       </Button>
-    </div>
+    </div> 
   );
 }

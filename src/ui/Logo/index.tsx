@@ -4,7 +4,7 @@ import { TypedText } from "./TypedText";
 
 export default function Logo() {
   return (
-    <div className="mx-auto flex flex-col items-center pt-8 pb-10 [&>*]:text-white select-none">
+    <div id="logo" className="mx-auto flex flex-col items-center pt-8 pb-10 [&>*]:text-white select-none">
       <div className="flex items-center [&>*]:m-2">
         <Image
           className="bg-white rounded-lg drop-shadow-xl"

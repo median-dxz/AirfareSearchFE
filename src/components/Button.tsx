@@ -1,11 +1,10 @@
-import React from "react";
-import MuiButton from "@mui/base/Button";
 import type { ButtonOwnerState, ButtonProps } from "@mui/base/Button";
+import MuiButton from "@mui/base/Button";
 import clsx from "clsx";
 
 const cls = {
   primary: [
-    "inline-block",
+    "flex",
     "rounded",
     "bg-primary",
     "px-6",
@@ -31,7 +30,7 @@ const cls = {
     "disabled:opacity-70",
   ],
   secondary: [
-    "inline-block",
+    "flex",
     "rounded",
     "bg-primary-100",
     "px-6",
@@ -53,7 +52,7 @@ const cls = {
     "disabled:opacity-70",
   ],
   tetriary: [
-    "inline-block",
+    "flex",
     "rounded",
     "px-6",
     "pb-2",
@@ -82,7 +81,7 @@ const filterState = (disabled = false) => {
   };
 };
 
-function Button({ color, children, disabled, ...props }: ButtonProps & { color: keyof typeof cls }) {
+function Button({ color = "primary", children, disabled, ...props }: ButtonProps & { color?: keyof typeof cls }) {
   return (
     <MuiButton
       type="button"

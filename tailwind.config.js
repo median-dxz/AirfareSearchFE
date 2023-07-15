@@ -6,7 +6,7 @@ module.exports = {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
     "./node_modules/tw-elements/dist/js/**/*.js",
   ],
-  safelist: ["animate-[fade-in_1s_ease-in-out]", "animate-[fade-out_1s_ease-in-out]"],
+  safelist: ["animate-[fade-in_0.3s_ease]", "animate-[fade-out_0.3s_ease]"],
   theme: {
     extend: {},
   },
