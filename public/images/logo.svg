@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 0 24 24" width="48">
+    <defs>
+        <linearGradient id="theme" gradientTransform="rotate(45)">
+            <stop offset="25%" stop-color="#ce9ffc" />
+            <stop offset="100%" stop-color="#7367f0" />
+        </linearGradient>
+    </defs>
+    <path d="M0 24V0h24v24H0z" fill="none" />
+    <path fill="url(#theme)"
+        d="M20.4 20.6L12.92 3.15a1 1 0 00-1.84 0L3.6 20.6c-.29.66.2 1.39.91 1.39l4.61.01c.5 0 .93-.37.99-.87L12 7l1.88 14.13c.07.5.5.87 1 .87l4.61-.01c.71 0 1.2-.73.91-1.39z" />
+</svg>
