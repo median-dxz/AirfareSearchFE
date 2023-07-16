@@ -1,6 +1,6 @@
+import DropDownButton from "@/components/FlightSearch/DropDownButton";
 import RangeInput from "@/components/RangeInput";
 import UsersIcon from "@heroicons/react/24/solid/UsersIcon";
-import DropDownButton from "../../../components/RouteSearchForm/DropDownButton";
 
 export default function PeopleDropDown() {
   return (

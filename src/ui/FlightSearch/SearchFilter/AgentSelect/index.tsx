@@ -1,8 +1,8 @@
+import DropDownButton from "@/components/FlightSearch/DropDownButton";
 import TicketIcon from "@heroicons/react/24/outline/TicketIcon";
-import DropDownButton from "../../../../components/RouteSearchForm/DropDownButton";
 import AgentList from "./AgentList";
 
-export default function AgentDropDown() {
+export default function AgentSelect() {
   return (
     <DropDownButton
       buttonContent={

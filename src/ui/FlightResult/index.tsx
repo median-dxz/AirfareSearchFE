@@ -1,4 +1,4 @@
-export default function ResultBox() {
+export default function FlightResultList() {
   return (
     <div>
       <div>111</div>

@@ -1,5 +1,5 @@
 import Button from "@/components/Button";
-import AutoComplete from "@/components/RouteSearchForm/AutoComplete";
+import AutoComplete from "@/components/FlightSearch/AutoComplete";
 
 export default function AgentAddForm() {
   return (
