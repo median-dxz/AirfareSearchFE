@@ -1,13 +1,14 @@
 import NewRouteButton from "./NewRouteButton";
 import FlightRouteItem from "./FlightRouteItem";
+import Box from "@/components/Box";
 
 export default function FlightRouteList() {
   return (
-    <div id="flight-route-group" className="w-full p-2 relative">
-      <ul className="space-y-2">
+    <Box id="flight-route-group" className="p-2">
+      <ul className="space-y-2 mb-2">
         <FlightRouteItem />
       </ul>
       <NewRouteButton />
-    </div>
+    </Box>
   );
 }

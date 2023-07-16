@@ -1,8 +1,9 @@
-import "./globals.css";
-import description from "./description.json";
+import Box from "@/components/Box";
+import Logo from "@/ui/Logo";
 import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
-import Logo from "@/ui/Logo";
+import description from "./description.json";
+import "./globals.css";
 
 const roboto = Roboto({
   subsets: ["latin"],
@@ -30,7 +31,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <Logo />
             <div className="h-[2rem] absolute bottom-[-1rem] w-full rounded-3xl bg-white" />
           </div>
-          <div>{children}</div>
+          {children}
         </main>
       </body>
     </html>

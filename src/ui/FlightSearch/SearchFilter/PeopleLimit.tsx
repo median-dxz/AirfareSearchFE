@@ -13,7 +13,7 @@ export default function PeopleDropDown() {
       }
     >
       <label htmlFor="PeopleRange" className="mx-auto text-sm inline text-gray-500">
-        人数:
+        人数(1-8):
       </label>
       <RangeInput
         id="PeopleRange"

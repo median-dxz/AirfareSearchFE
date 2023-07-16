@@ -1,13 +1,14 @@
-import FlightResultList from "@/ui/FlightResultList";
-import FlightSearchForm from "@/ui/FlightSearchForm";
+import Box from "@/components/Box";
+import FlightResult from "@/ui/FlightResult";
+import FlightSearch from "@/ui/FlightSearch";
 
 export default function Main() {
   return (
-    <div>
+    <Box>
       {/* 搜索部分 */}
-      <FlightSearchForm />
+      <FlightSearch />
       {/* 搜索结果部分 */}
-      <FlightResultList />
-    </div>
+      <FlightResult />
+    </Box>
   );
 }

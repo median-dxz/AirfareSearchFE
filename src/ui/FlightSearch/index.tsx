@@ -4,6 +4,7 @@ import Loading from "@/components/Loading";
 import dynamic from "next/dynamic";
 import SearchButton from "./SearchButton";
 import SearchFilter from "./SearchFilter";
+import Box from "@/components/Box";
 
 const FlightRouteList = dynamic(() => import("./FlightRouteList"), {
   ssr: false,
@@ -17,13 +18,13 @@ const FlightRouteList = dynamic(() => import("./FlightRouteList"), {
 
 export default function FlightSearch() {
   return (
-    <div id="search-form" className="container relative w-full mx-auto my-[-3rem] flex flex-col items-center space-y-2">
-      <div className="min-h-[4rem] w-full relative bg-white rounded drop-shadow-xl flex flex-col">
+    <Box id="search-form" className="container mx-auto my-[-3rem] items-center space-y-2" stack>
+      <Box className="min-h-[4rem] bg-white rounded drop-shadow-xl" stack>
         <SearchFilter />
         <Divider className={"my-2"} />
         <FlightRouteList />
-      </div>
+      </Box>
       <SearchButton />
-    </div>
+    </Box>
   );
 }

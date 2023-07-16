@@ -1,4 +1,4 @@
-import ListItem from "@/components/RouteSearchForm/ListItem";
+import ListItem from "@/components/FlightSearch/ListItem";
 import PlusIcon from "@heroicons/react/24/solid/PlusIcon";
 
 export default function NewRouteButton() {
