@@ -1,5 +1,5 @@
 import TicketIcon from "@heroicons/react/24/outline/TicketIcon";
-import DropDownButton from "./DropDownButton";
+import DropDownButton from "../DropDownButton";
 import AgentList from "./AgentList";
 
 export default function AgentDropDown() {

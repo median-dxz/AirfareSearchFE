@@ -8,6 +8,7 @@ import dynamic from "next/dynamic";
 
 const FlightRouteGroup = dynamic(() => import("./FlightRoute/FlightRouteGroup"), {
   ssr: false,
+  loading: () => <div className="p-8 w-full mx-auto text-center">loading...</div>,
 });
 
 export default function SearchBox() {

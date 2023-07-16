@@ -7,7 +7,7 @@ const NumberInput = ({ slotProps, ...props }: InputProps) => {
       slotProps={{
         root: {
           ...slotProps?.root,
-          className: "flex relative rounded border-[1px] px-3 py-[0.32rem]",
+          className: "flex relative rounded border-1 px-3 py-[0.32rem]",
         },
         input: {
           ...slotProps?.input,

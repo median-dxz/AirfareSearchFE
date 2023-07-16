@@ -8,7 +8,11 @@ module.exports = {
   ],
   safelist: ["animate-[fade-in_0.3s_ease]", "animate-[fade-out_0.3s_ease]"],
   theme: {
-    extend: {},
+    extend: {
+      borderWidth: {
+        1: "1px",
+      },
+    },
   },
   plugins: [require("tw-elements/dist/plugin.cjs")],
 };

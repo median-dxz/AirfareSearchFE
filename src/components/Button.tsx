@@ -75,19 +75,27 @@ const cls = {
   ],
 };
 
-const filterState = (disabled = false) => {
+const filterState = (disabled = false, iconOnly = false) => {
   return (className: string) => {
-    return !["hover", "active"].find((state) => className.includes(state)) || !disabled;
+    let state = !disabled || !["hover", "active"].find((state) => className.includes(state));
+    let iconPadding = !iconOnly || !["pb", "px", "pt"].find((iconPadding) => className.startsWith(iconPadding));
+    return state && iconPadding;
   };
 };
 
-function Button({ color = "primary", children, disabled, ...props }: ButtonProps & { color?: keyof typeof cls }) {
+function Button({
+  color = "primary",
+  children,
+  disabled,
+  iconOnly,
+  ...props
+}: ButtonProps & { color?: keyof typeof cls; iconOnly?: boolean }) {
   return (
     <MuiButton
       type="button"
       slotProps={{
         root: (_ownerState: ButtonOwnerState) => ({
-          className: clsx(cls[color].filter(filterState(disabled))),
+          className: clsx(cls[color].filter(filterState(disabled, iconOnly)), iconOnly && "p-2"),
         }),
       }}
       disabled={disabled}
