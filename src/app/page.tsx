@@ -1,4 +1,5 @@
 import Logo from "@/ui/Logo";
+import ResultBox from "@/ui/ResultBox";
 import SearchBox from "@/ui/SearchBox";
 
 export default function Main() {
@@ -12,12 +13,15 @@ export default function Main() {
         <Logo />
         <div className="h-[2rem] absolute bottom-[-1rem] w-full rounded-3xl bg-white" />
       </div>
-
+      <div>
       {/* 搜索部分 */}
       <SearchBox />
 
       {/* 搜索结果部分 */}
-      {/* <ResultBox/> */}
+      <ResultBox />
+      </div>
+
+
     </main>
   );
 }

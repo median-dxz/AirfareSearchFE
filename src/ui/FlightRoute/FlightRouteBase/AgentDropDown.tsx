@@ -1,5 +1,6 @@
 import TicketIcon from "@heroicons/react/24/outline/TicketIcon";
 import DropDownButton from "./DropDownButton";
+import AgentList from "./AgentList";
 
 export default function AgentDropDown() {
   return (
@@ -7,11 +8,11 @@ export default function AgentDropDown() {
       buttonContent={
         <>
           <TicketIcon width={18} />
-          <span>代理: {20}</span>
+          <span>代理人: {20}</span>
         </>
       }
     >
-      {}
+      <AgentList />
     </DropDownButton>
   );
 }

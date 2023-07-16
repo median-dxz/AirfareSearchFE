@@ -3,7 +3,12 @@ import Button from "@/components/Button";
 import Divider from "@/components/Divider";
 import SearchIcon from "@heroicons/react/24/solid/MagnifyingGlassIcon";
 import FlightRouteBase from "./FlightRoute/FlightRouteBase";
-import FlightRouteGroup from "./FlightRoute/FlightRouteGroup";
+// import FlightRouteGroup from "./FlightRoute/FlightRouteGroup";
+import dynamic from "next/dynamic";
+
+const FlightRouteGroup = dynamic(() => import("./FlightRoute/FlightRouteGroup"), {
+  ssr: false,
+});
 
 export default function SearchBox() {
   return (
@@ -17,6 +22,6 @@ export default function SearchBox() {
         <SearchIcon height={24} />
         <span className="mx-2">搜索</span>
       </Button>
-    </div> 
+    </div>
   );
 }
