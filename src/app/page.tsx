@@ -1,14 +1,33 @@
+"use client";
 import Box from "@/components/Box";
-import FlightResult from "@/ui/FlightResult";
-import FlightSearch from "@/ui/FlightSearch";
+import Divider from "@/components/Divider";
+import Loading from "@/components/Loading";
 
-export default function Main() {
+import SearchButton from "@/components/FlightSearch/SearchButton";
+
+import SearchFilter from "@/ui/SearchFilter";
+
+import dynamic from "next/dynamic";
+
+const FlightRouteList = dynamic(() => import("@/ui/FlightRouteList"), {
+  ssr: false,
+  loading: () => (
+    <div className="p-8 w-full mx-auto text-center">
+      <Loading />
+      loading...
+    </div>
+  ),
+});
+
+export default function FlightSearch() {
   return (
-    <Box>
-      {/* 搜索部分 */}
-      <FlightSearch />
-      {/* 搜索结果部分 */}
-      <FlightResult />
+    <Box id="search-form" className="container mx-auto my-[-3rem] items-center space-y-2" stack>
+      <Box className="min-h-[4rem] bg-white rounded drop-shadow-xl" stack>
+        <SearchFilter />
+        <Divider className={"my-2"} />
+        <FlightRouteList />
+      </Box>
+      <SearchButton />
     </Box>
   );
 }
