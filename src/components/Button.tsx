@@ -95,7 +95,7 @@ function Button({
       type="button"
       slotProps={{
         root: (_ownerState: ButtonOwnerState) => ({
-          className: clsx(cls[color].filter(filterState(disabled, iconOnly)), iconOnly && "p-2"),
+          className: clsx(cls[color].filter(filterState(disabled, iconOnly)), iconOnly && "p-2 justify-center"),
         }),
       }}
       disabled={disabled}

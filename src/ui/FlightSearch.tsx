@@ -21,8 +21,8 @@ const FlightRouteList = dynamic(() => import("@/ui/FlightRouteList"), {
 export default function FlightSearch() {
   // useStore
   return (
-    <Box id="search-form" className="container mx-auto my-[-3rem] items-center space-y-2" stack>
-      <Box className="min-h-[4rem] bg-white rounded drop-shadow-lg" stack>
+    <Box id="search-form" className="container mx-auto my-[-3rem] items-center space-y-2 pb-4" stack>
+      <Box className="min-h-[4rem] bg-white rounded drop-shadow-lg mb-4" stack>
         {/* provider */}
         <SearchFilter />
         <FlightRouteList />
