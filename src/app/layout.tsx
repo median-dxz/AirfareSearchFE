@@ -1,4 +1,3 @@
-import Box from "@/components/Box";
 import Logo from "@/ui/Logo";
 import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
@@ -23,16 +22,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <meta name="viewport" content="initial-scale=1, width=device-width" />
       </head>
       <body className={roboto.className}>
-        <main className="h-full">
-          <div
-            id="background-container"
-            className="min-h-[50vh] relative w-full flex items-center bg-gradient-to-br from-[#ce9ffc] to-[#7367f0]"
-          >
-            <Logo />
-            <div className="h-[2rem] absolute bottom-[-1rem] w-full rounded-3xl bg-white" />
-          </div>
-          {children}
-        </main>
+       {children}
       </body>
     </html>
   );

@@ -6,7 +6,7 @@ export default forwardRef<HTMLDivElement, BoxProps>(function Box(
   { children, className, stack = false, ...props },
   ref
 ) {
-  className = `flex w-full relative ${stack ? "flex-col" : ""} ${className ?? ""}`;
+  className = `flex w-full relative ${stack ? "flex-col " : ""}${className ?? ""}`;
   return (
     <div ref={ref} className={className.trim()} {...props}>
       {children}
