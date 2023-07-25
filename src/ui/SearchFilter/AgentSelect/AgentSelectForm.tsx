@@ -1,8 +1,8 @@
 import Box from "@/components/Box";
 import Button from "@/components/Button";
-import AutoComplete from "@/components/FlightSearch/AutoComplete";
+import AutoComplete from "@/components/Search/AutoComplete";
 
-export default function AgentSelectForm() {
+export function AgentSelectForm() {
   return (
     <Box className="items-center pt-2 border-t-1">
       <AutoComplete />

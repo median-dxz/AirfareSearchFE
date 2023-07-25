@@ -12,6 +12,9 @@ module.exports = {
       borderWidth: {
         1: "1px",
       },
+      boxShadow: {
+        container: "0 4px 8px 0 rgba(39,36,43,.24)",
+      },
     },
   },
   plugins: [require("tw-elements/dist/plugin.cjs")],

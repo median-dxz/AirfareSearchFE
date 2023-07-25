@@ -1,5 +1,5 @@
 import DatePicker from "@/components/DatePicker";
 
-export default function DateSelect() {
+export function DateSelect() {
   return <DatePicker />;
 }

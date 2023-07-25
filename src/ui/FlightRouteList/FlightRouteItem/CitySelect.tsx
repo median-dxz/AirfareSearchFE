@@ -1,5 +1,5 @@
 import SelectorWithFilter from "@/components/SelectorWithFilter";
 
-export default function CitySelect(){
+export function CitySelect(){
     return <SelectorWithFilter/>
 }

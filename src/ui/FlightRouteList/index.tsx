@@ -1,6 +1,6 @@
-import NewRouteButton from "./NewRouteButton";
-import FlightRouteItem from "./FlightRouteItem";
 import Box from "@/components/Box";
+import { FlightRouteItem } from "./FlightRouteItem";
+import { NewRouteButton } from "./NewRouteButton";
 
 export default function FlightRouteList() {
   return (

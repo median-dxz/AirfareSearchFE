@@ -1,7 +1,7 @@
 import Box from "@/components/Box";
-import AgentSelect from "./AgentSelect";
-import PeopleLimit from "./PeopleLimit";
-import ResultsLimit from "./ResultsLimit";
+import { AgentSelect } from "./AgentSelect";
+import { PeopleLimit } from "./PeopleLimit";
+import { ResultsLimit } from "./ResultsLimit";
 
 export default function SearchFilter() {
   return (

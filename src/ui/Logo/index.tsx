@@ -14,9 +14,9 @@ export default function Logo() {
           height={48}
           priority
         />
-        <div className="text-[48px]">Airfare Search</div>
+        <div className="text-[2rem] sm:text-[3rem]">Airfare Search</div>
       </div>
-      <TypedText className="text-2xl m-2 font-semibold" text={descrition} />
+      <TypedText className="text-2xl m-2 font-semibold h-6" text={descrition} />
     </div>
   );
 }

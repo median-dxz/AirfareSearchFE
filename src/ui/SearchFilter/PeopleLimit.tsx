@@ -1,8 +1,8 @@
-import DropDownButton from "@/components/FlightSearch/DropDownButton";
+import DropDownButton from "@/components/Search/DropDownButton";
 import RangeInput from "@/components/RangeInput";
 import UsersIcon from "@heroicons/react/24/solid/UsersIcon";
 
-export default function PeopleDropDown() {
+export function PeopleLimit() {
   return (
     <DropDownButton
       buttonContent={

@@ -1,10 +1,10 @@
-import DropDownButton from "@/components/FlightSearch/DropDownButton";
-import TicketIcon from "@heroicons/react/24/outline/TicketIcon";
-import AgentList from "./AgentList";
-import AgentSelectForm from "./AgentSelectForm";
 import Box from "@/components/Box";
+import DropDownButton from "@/components/Search/DropDownButton";
+import TicketIcon from "@heroicons/react/24/outline/TicketIcon";
+import { AgencyList } from "./AgencyList";
+import { AgentSelectForm } from "./AgentSelectForm";
 
-export default function AgentSelect() {
+export function AgentSelect() {
   return (
     <DropDownButton
       buttonContent={
@@ -15,7 +15,7 @@ export default function AgentSelect() {
       }
     >
       <Box stack>
-        <AgentList />
+        <AgencyList />
         <AgentSelectForm />
       </Box>
     </DropDownButton>

@@ -1,13 +1,13 @@
 import Button from "@/components/Button";
-import DatePicker from "@/components/DatePicker";
-import ListItem from "@/components/FlightSearch/ListItem";
-import TrashIcon from "@heroicons/react/24/outline/TrashIcon";
+import RouteItem from "@/components/Search/RouteItem";
 import PaperAirplaneIcon from "@heroicons/react/24/outline/PaperAirplaneIcon";
-import CitySelect from "./CitySelect";
+import TrashIcon from "@heroicons/react/24/outline/TrashIcon";
+import { CitySelect } from "./CitySelect";
+import { DateSelect } from "./DateSelect";
 
-export default function FlightRouteItem() {
+export function FlightRouteItem() {
   return (
-    <ListItem>
+    <RouteItem>
       <span className="m-1 inline-block">
         <CitySelect />
       </span>
@@ -21,12 +21,12 @@ export default function FlightRouteItem() {
       </span>
 
       <span className="m-1 inline-block">
-        <DatePicker />
+        <DateSelect />
       </span>
 
       <Button color="secondary" iconOnly className="m-2">
         <TrashIcon height={16} />
       </Button>
-    </ListItem>
+    </RouteItem>
   );
 }

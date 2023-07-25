@@ -1,8 +1,8 @@
-import DropDownButton from "@/components/FlightSearch/DropDownButton";
+import DropDownButton from "@/components/Search/DropDownButton";
 import NumberInput from "@/components/NumberInput";
 import QueueListIcon from "@heroicons/react/24/outline/QueueListIcon";
 
-export default function ResultsDropDown() {
+export function ResultsLimit() {
   return (
     <DropDownButton
       buttonContent={

@@ -2,7 +2,7 @@
 import Box from "@/components/Box";
 import Loading from "@/components/Loading";
 
-import SearchButton from "@/components/FlightSearch/SearchButton";
+import SearchButton from "@/components/Search/SearchButton";
 
 import SearchFilter from "@/ui/SearchFilter";
 

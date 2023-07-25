@@ -24,7 +24,7 @@ export function TypedText({ text, className }: Props) {
 
   return (
     <div className={className}>
-      <span ref={el} />
+      <span ref={el}> </span>
     </div>
   );
 }
