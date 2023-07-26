@@ -1,5 +1,6 @@
 import Button from "@/components/Button";
 import { useSearchPayload } from "@/store/SearchPayload";
+import { SeachRoute } from "@/utils/type";
 import PlusIcon from "@heroicons/react/24/solid/PlusIcon";
 import React from "react";
 
@@ -7,7 +8,10 @@ export function NewRouteButton() {
   const [payload, dispatch] = useSearchPayload();
 
   const handleClick: React.MouseEventHandler<HTMLButtonElement> = (evt) => {
-    dispatch({ type: "addRoute", data: { departure: "", arrival: "", departureDate: new Date() } });
+    dispatch({
+      type: "addRoute",
+      data: { departure: "", arrival: "", departureDate: new Date(), createTime: Date.now() } as SeachRoute,
+    });
   };
 
   return (

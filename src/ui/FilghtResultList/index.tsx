@@ -3,6 +3,7 @@ import { ResultItem } from "@/components/Result/ResultItem";
 import { FlightResult } from "@/utils/type";
 import { FilghtList } from "./FilghtList";
 import { seach } from "@/lib/search";
+import React from "react";
 
 function ResultHeader({ agencies, price }: { agencies: string[]; price: number }) {
   return (
@@ -16,11 +17,18 @@ function ResultHeader({ agencies, price }: { agencies: string[]; price: number }
   );
 }
 
-export default async function FilghtResultList() {
-  const data: FlightResult[] = await seach();
+export default function FilghtResultList() {
+  const [results, setResults] = React.useState([] as FlightResult[]);
+
+  React.useEffect(() => {
+    seach().then((data) => {
+      setResults(data);
+    });
+  }, []);
+
   return (
     <ul className="w-full flex flex-col space-y-2">
-      {data.map((result, index) => (
+      {results.map((result, index) => (
         <ResultItem key={index}>
           <ResultHeader agencies={result.agencies} price={result.price} />
           <FilghtList filghts={result.filghts} />

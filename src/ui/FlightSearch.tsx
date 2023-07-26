@@ -12,7 +12,7 @@ import dynamic from "next/dynamic";
 const FlightRouteList = dynamic(() => import("@/ui/FlightRouteList"), {
   ssr: false,
   loading: () => (
-    <div className="p-8 w-full mx-auto text-center">
+    <div className="p-8 w-full flex items-center justify-center">
       <Loading />
       loading...
     </div>

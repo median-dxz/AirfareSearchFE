@@ -15,6 +15,7 @@ export interface Filght {
 }
 
 export interface SeachRoute {
+  createTime: number;
   departure: string;
   arrival: string;
   departureDate: Date;

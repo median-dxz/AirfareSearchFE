@@ -1,38 +1,34 @@
 import Button from "@/components/Button";
 import RouteItem from "@/components/Search/RouteItem";
-import { useSearchPayload } from "@/store/SearchPayload";
+import { SeachRoute } from "@/utils/type";
 import ArrowPathIcon from "@heroicons/react/24/outline/ArrowPathIcon";
 import TrashIcon from "@heroicons/react/24/outline/TrashIcon";
 import { CitySelect } from "./CitySelect";
 import { DateSelect } from "./DateSelect";
 
 interface FlightRouteItemProps {
+  route: SeachRoute;
+  updateRoute: (route: SeachRoute) => void;
+  deleteRoute: () => void;
   index: number;
 }
 
-export function FlightRouteItem({ index }: FlightRouteItemProps) {
-  const [payload, dispatch] = useSearchPayload();
-  const route = payload.routes[index];
-
+export function FlightRouteItem({ route, updateRoute, deleteRoute, index }: FlightRouteItemProps) {
   const handleUpdateDeparture = (value: string) => {
-    dispatch({ type: "updateRoute", data: { ...route, departure: value }, index });
+    updateRoute({ ...route, departure: value });
   };
 
   const handleUpdateArrival = (value: string) => {
-    dispatch({ type: "updateRoute", data: { ...route, arrival: value }, index });
+    updateRoute({ ...route, arrival: value });
   };
 
   const handleUpdateDate = (value: Date) => {
-    dispatch({ type: "updateRoute", data: { ...route, departureDate: value }, index });
-  };
-
-  const handleDeleteRoute = () => {
-    dispatch({ type: "deleteRoute", data: null, index });
+    updateRoute({ ...route, departureDate: value });
   };
 
   return (
     <RouteItem>
-      <span className="inline-block text-slate-900">Route {index} : </span>
+      <span className="inline-block text-slate-900">Route {index + 1} : </span>
 
       <CitySelect value={route.departure} onChange={handleUpdateDeparture} />
 
@@ -42,7 +38,7 @@ export function FlightRouteItem({ index }: FlightRouteItemProps) {
 
       <DateSelect value={route.departureDate} onChange={handleUpdateDate} />
 
-      <Button onClick={handleDeleteRoute} color="secondary" iconOnly>
+      <Button onClick={deleteRoute} color="secondary" iconOnly>
         <TrashIcon height={16} />
       </Button>
     </RouteItem>

@@ -18,13 +18,12 @@ const PayloadDispatchStore = React.createContext<
   React.Dispatch<{
     type: SearchPayloadAction;
     data: any;
-    index?: number | undefined;
   }>
 >({} as any);
 
 export const useSearchPayload = () => [React.useContext(PayloadStore), React.useContext(PayloadDispatchStore)] as const;
 
-function searchPayloadReducer(payload: SeachPayloadStore, action: { type: string; data: any; index?: number }) {
+function searchPayloadReducer(payload: SeachPayloadStore, action: { type: string; data: any }) {
   switch (action.type) {
     case "setPeople": {
       return produce(payload, (draft) => {
@@ -51,22 +50,26 @@ function searchPayloadReducer(payload: SeachPayloadStore, action: { type: string
     }
 
     case "deleteRoute": {
-      const { index } = action;
-      if (index == undefined) {
-        throw Error("index is null");
+      const { createTime } = action.data as SeachRoute;
+      if (createTime == undefined) {
+        throw Error("route is unvalid");
       }
       return produce(payload, (draft) => {
-        draft.routes.splice(index, 1);
+        draft.routes = draft.routes.filter((route) => route.createTime != createTime);
       });
     }
 
     case "updateRoute": {
-      const { index } = action;
-      if (index == undefined) {
-        throw Error("index is null");
+      const { createTime } = action.data as SeachRoute;
+      if (createTime == undefined) {
+        throw Error("route is unvalid");
       }
       return produce(payload, (draft) => {
-        draft.routes.splice(index, 1, action.data);
+        const index = draft.routes.findIndex((route) => route.createTime == createTime);
+        if (index == -1) {
+          throw Error("route is not found");
+        }
+        draft.routes[index] = action.data;
       });
     }
 
@@ -79,7 +82,7 @@ function searchPayloadReducer(payload: SeachPayloadStore, action: { type: string
 export const SearchPayloadProvider = ({ children }: PropsWithChildren<object>) => {
   const [payload, dispatch] = React.useReducer(searchPayloadReducer, {
     people: 1,
-    maxResults: 1,
+    maxResults: 10,
     agencies: [],
     routes: [],
   } as SeachPayloadStore);
