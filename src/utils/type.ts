@@ -14,4 +14,10 @@ export interface Filght {
   cabins: Cabin[];
 }
 
+export interface SeachRoute {
+  departure: string;
+  arrival: string;
+  departureDate: Date;
+}
+
 export type Cabin = "F" | "C" | "Y";

@@ -1,6 +1,8 @@
+"use client";
 import { ResultItem } from "@/components/Result/ResultItem";
 import { FlightResult } from "@/utils/type";
 import { FilghtList } from "./FilghtList";
+import { seach } from "@/lib/search";
 
 function ResultHeader({ agencies, price }: { agencies: string[]; price: number }) {
   return (
@@ -14,11 +16,8 @@ function ResultHeader({ agencies, price }: { agencies: string[]; price: number }
   );
 }
 
-interface FilghtResultListProps {
-  data: FlightResult[];
-}
-
-export default function FilghtResultList({ data }: FilghtResultListProps) {
+export default async function FilghtResultList() {
+  const data: FlightResult[] = await seach();
   return (
     <ul className="w-full flex flex-col space-y-2">
       {data.map((result, index) => (

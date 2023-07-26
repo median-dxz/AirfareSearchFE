@@ -1,5 +1,7 @@
 import SelectorWithFilter from "@/components/SelectorWithFilter";
 
-export function CitySelect(){
-    return <SelectorWithFilter/>
+interface CitySelectProps {}
+
+export function CitySelect({ value, onChange }: CitySelectProps) {
+  return <SelectorWithFilter />;
 }

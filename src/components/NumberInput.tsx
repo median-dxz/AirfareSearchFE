@@ -1,7 +1,7 @@
 import MuiInput from "@mui/base/Input";
 import type { InputProps } from "@mui/base/Input";
 
-const NumberInput = ({ slotProps, ...props }: InputProps) => {
+const NumberInput: typeof MuiInput = ({ slotProps, ...props }: InputProps) => {
   return (
     <MuiInput
       slotProps={{
