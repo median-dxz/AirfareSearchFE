@@ -16,7 +16,7 @@ export default function FlightRouteList() {
       <ul className="space-y-2 mb-2">
         {payload.routes.map((route, index) => (
           <FlightRouteItem
-            key={route.createTime}
+            key={route.id}
             index={index}
             route={route}
             updateRoute={handleSetRoute}

@@ -6,8 +6,8 @@ export async function seach() {
       agencies: ["BJS001", "CAN001"],
       filghts: [
         {
-          arrival: "AAA",
-          departure: "BBB",
+          arrival: { code: "AAA", name: "中国" },
+          departure: { code: "BBB", name: "中国" },
           arrivalDatetime: new Date(),
           departureDatetime: new Date(),
           cabins: ["F", "C"],
@@ -15,8 +15,8 @@ export async function seach() {
           flightNo: "0123",
         },
         {
-          arrival: "AAA",
-          departure: "BBB",
+          arrival: { code: "AAA", name: "中国" },
+          departure: { code: "BBB", name: "中国" },
           arrivalDatetime: new Date(),
           departureDatetime: new Date(),
           cabins: ["F", "C"],
@@ -24,8 +24,8 @@ export async function seach() {
           flightNo: "0123",
         },
         {
-          arrival: "AAA",
-          departure: "BBB",
+          arrival: { code: "AAA", name: "中国" },
+          departure: { code: "BBB", name: "中国" },
           arrivalDatetime: new Date(),
           departureDatetime: new Date(),
           cabins: ["F", "C"],
@@ -33,8 +33,8 @@ export async function seach() {
           flightNo: "0123",
         },
         {
-          arrival: "AAA",
-          departure: "BBB",
+          arrival: { code: "AAA", name: "中国" },
+          departure: { code: "BBB", name: "中国" },
           arrivalDatetime: new Date(),
           departureDatetime: new Date(),
           cabins: ["F", "C"],
@@ -42,8 +42,8 @@ export async function seach() {
           flightNo: "0123",
         },
         {
-          arrival: "AAA",
-          departure: "BBB",
+          arrival: { code: "AAA", name: "中国" },
+          departure: { code: "BBB", name: "中国" },
           arrivalDatetime: new Date(),
           departureDatetime: new Date(),
           cabins: ["F", "C"],
@@ -57,8 +57,8 @@ export async function seach() {
       agencies: ["BJS001", "CAN001"],
       filghts: [
         {
-          arrival: "AAA",
-          departure: "BBB",
+          arrival: { code: "AAA", name: "中国" },
+          departure: { code: "BBB", name: "中国" },
           arrivalDatetime: new Date(),
           departureDatetime: new Date(),
           cabins: ["F", "C"],
@@ -66,8 +66,8 @@ export async function seach() {
           flightNo: "0123",
         },
         {
-          arrival: "AAA",
-          departure: "BBB",
+          arrival: { code: "AAA", name: "中国" },
+          departure: { code: "BBB", name: "中国" },
           arrivalDatetime: new Date(),
           departureDatetime: new Date(),
           cabins: ["F", "C"],

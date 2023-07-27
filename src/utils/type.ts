@@ -7,18 +7,25 @@ export interface FlightResult {
 export interface Filght {
   carrier: string;
   flightNo: string;
-  departure: string;
-  arrival: string;
+  departure: City;
+  arrival: City;
   departureDatetime: Date;
   arrivalDatetime: Date;
   cabins: Cabin[];
 }
 
 export interface SeachRoute {
-  createTime: number;
-  departure: string;
-  arrival: string;
-  departureDate: Date;
+  id: number;
+  departure?: City;
+  arrival?: City;
+  departureDate?: Date;
 }
+
+export interface City {
+  code: string;
+  name: string;
+}
+
+export const stringifyCity = (city: City) => `${city.name}(${city.code})`;
 
 export type Cabin = "F" | "C" | "Y";

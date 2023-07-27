@@ -50,22 +50,22 @@ function searchPayloadReducer(payload: SeachPayloadStore, action: { type: string
     }
 
     case "deleteRoute": {
-      const { createTime } = action.data as SeachRoute;
-      if (createTime == undefined) {
+      const { id } = action.data as SeachRoute;
+      if (id == undefined) {
         throw Error("route is unvalid");
       }
       return produce(payload, (draft) => {
-        draft.routes = draft.routes.filter((route) => route.createTime != createTime);
+        draft.routes = draft.routes.filter((route) => route.id != id);
       });
     }
 
     case "updateRoute": {
-      const { createTime } = action.data as SeachRoute;
-      if (createTime == undefined) {
+      const { id } = action.data as SeachRoute;
+      if (id == undefined) {
         throw Error("route is unvalid");
       }
       return produce(payload, (draft) => {
-        const index = draft.routes.findIndex((route) => route.createTime == createTime);
+        const index = draft.routes.findIndex((route) => route.id == id);
         if (index == -1) {
           throw Error("route is not found");
         }

@@ -7,6 +7,7 @@ export default function SearchButton() {
   const router = useRouter();
   const [payload, dispatch] = useSearchPayload();
   const handleClick = () => {
+    // TODO: 表单校验
     router.push(`/flights`);
     console.log(payload);
   };
