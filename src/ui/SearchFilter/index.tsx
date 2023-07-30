@@ -1,5 +1,5 @@
 import Box from "@/components/Box";
-import { AgentSelect } from "./AgentSelect";
+import { AgencySelect } from "./AgentSelect";
 import { PeopleLimit } from "./PeopleLimit";
 import { ResultsLimit } from "./ResultsLimit";
 
@@ -8,7 +8,7 @@ export default function SearchFilter() {
     <Box id="flight-router-base" stack className="p-2 overflow-hidden text-ellipsis sm:flex-row">
       <PeopleLimit />
       <ResultsLimit />
-      <AgentSelect />
+      <AgencySelect />
     </Box>
   );
 }

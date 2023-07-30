@@ -28,7 +28,7 @@ function DropDown({ button, anchorEl, setAnchorEl, children }: DropDownProps) {
 
   return (
     <ClickAwayListener mouseEvent="onMouseDown" touchEvent="onTouchStart" onClickAway={handleClickAway}>
-      <div role="none">
+      <div role="none" className="max-w-[1/4]">
         {button}
         <Popper
           className="flex flex-col py-3 m-0 min-w-max list-none overflow-hidden rounded border-none bg-white bg-clip-padding text-left text-base shadow-[0_4px_16px_rgba(69,88,115,.2)] animate-[fade-in_0.3s_ease]"

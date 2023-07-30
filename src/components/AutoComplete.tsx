@@ -46,9 +46,11 @@ export default forwardRef(function AutoComplete<TOption>(
         optionText = getOptionLabel ? getOptionLabel(option) : JSON.stringify(option);
       }
 
-      <li className="list-none p-2 text-secondary my-2" {...optionProps}>
-        {optionText}
-      </li>;
+      return (
+        <li className="list-none p-2 text-secondary-900 my-2" {...optionProps}>
+          {optionText}
+        </li>
+      );
     }
   };
 
@@ -154,15 +156,7 @@ const StyledListbox = React.forwardRef<HTMLUListElement, React.HTMLAttributes<HT
       "[&::-webkit-scrollbar-thumb]:bg-[#999]",
       "[&::-webkit-scrollbar-thumb]:rounded",
     ],
-    [
-      "max-h-[284px]",
-      "border-none",
-      "bg-white",
-      "shadow-[0_4px_16px_rgba(69,88,115,.2)]",
-      "rounded",
-      "p-1",
-      "my-1",
-    ],
+    ["max-h-[284px]", "border-none", "bg-white", "shadow-[0_4px_16px_rgba(69,88,115,.2)]", "rounded", "p-1", "my-1"],
     muiStyles["list-box"],
     className
   );

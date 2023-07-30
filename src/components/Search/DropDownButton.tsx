@@ -13,13 +13,13 @@ export default function DropDownButton({ children, buttonContent }: DropDownButt
   return (
     <DropDown
       button={
-        <Button
-          className="items-center space-x-2 whitespace-nowrap"
-          color="tetriary"
-          onClick={open}
-        >
+        <Button className="items-center space-x-2 whitespace-nowrap max-w-[206px]" color="tetriary" onClick={open}>
           {buttonContent}
-          {Boolean(props.anchorEl) ? <ChevronUpIcon width={18} /> : <ChevronDownIcon width={18} />}
+          {Boolean(props.anchorEl) ? (
+            <ChevronUpIcon className="flex-none w-5" />
+          ) : (
+            <ChevronDownIcon className="flex-none w-5" />
+          )}
         </Button>
       }
       {...props}

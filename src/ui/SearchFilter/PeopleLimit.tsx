@@ -15,7 +15,7 @@ export function PeopleLimit() {
     <DropDownButton
       buttonContent={
         <>
-          <UsersIcon width={18} />
+          <UsersIcon className="flex-none w-5" />
           <span>人数: {people}</span>
         </>
       }

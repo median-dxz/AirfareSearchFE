@@ -1,4 +1,4 @@
-import AutoComplete from "@/components/Search/AutoComplete";
+import AutoComplete from "@/components/AutoComplete";
 import CityIcon from "@heroicons/react/24/outline/BuildingOffice2Icon";
 import { getCities } from "@/lib/getCities";
 import { City, stringifyCity } from "@/utils/type";
@@ -7,7 +7,7 @@ import React, { useState } from "react";
 import useSWR from "swr";
 
 export function CityAutoComplete() {
-  const { data } = useSWR("getAgencies", getCities, { fallbackData: [] as City[] });
+  const { data } = useSWR("getCities", getCities, { fallbackData: [] as City[] });
 
   const [v, sv] = useState<City | null>(null);
 

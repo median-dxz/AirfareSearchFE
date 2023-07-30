@@ -18,7 +18,7 @@ export function ResultsLimit() {
     <DropDownButton
       buttonContent={
         <>
-          <QueueListIcon width={18} />
+          <QueueListIcon className="flex-none w-5" />
           <span>最大结果数: {maxResults}</span>
         </>
       }
