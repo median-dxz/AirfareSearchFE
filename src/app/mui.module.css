@@ -1,0 +1,4 @@
+.list-box :global(.Mui-focusVisible),
+.list-box :global(.Mui-focused) {
+  background-color: #eff6ff;
+}

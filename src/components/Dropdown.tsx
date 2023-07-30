@@ -31,7 +31,7 @@ function DropDown({ button, anchorEl, setAnchorEl, children }: DropDownProps) {
       <div role="none">
         {button}
         <Popper
-          className="flex flex-col py-3 m-0 min-w-max list-none overflow-hidden rounded-lg border-none bg-white bg-clip-padding text-left text-base shadow-[0_4px_16px_rgba(69,88,115,.2)] animate-[fade-in_0.3s_ease]"
+          className="flex flex-col py-3 m-0 min-w-max list-none overflow-hidden rounded border-none bg-white bg-clip-padding text-left text-base shadow-[0_4px_16px_rgba(69,88,115,.2)] animate-[fade-in_0.3s_ease]"
           open={open}
           anchorEl={anchorEl}
         >

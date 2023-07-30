@@ -1,11 +1,13 @@
 import Button from "@/components/Button";
+import DatePicker from "@/components/DatePicker";
 import RouteItem from "@/components/Search/RouteItem";
 import { City, SeachRoute } from "@/utils/type";
-import ArrowPathIcon from "@heroicons/react/24/outline/ArrowPathIcon";
+
+import ArrowPathRoundedSquareIcon from "@heroicons/react/24/outline/ArrowPathRoundedSquareIcon";
 import TrashIcon from "@heroicons/react/24/outline/TrashIcon";
-import { CitySelect } from "./CitySelect";
-import { CityAutoComplete } from "./SelectorWithFilter";
-import DatePicker from "@/components/DatePicker";
+
+import { useState } from "react";
+import { CityAutoComplete } from "./CityAutoComplete";
 
 interface FlightRouteItemProps {
   route: SeachRoute;
@@ -15,6 +17,9 @@ interface FlightRouteItemProps {
 }
 
 export function FlightRouteItem({ route, updateRoute, deleteRoute, index }: FlightRouteItemProps) {
+  const [arrival, setArrival] = useState<City | null>(route.arrival ?? null);
+  const [departure, setDeparture] = useState<City | null>(route.departure ?? null);
+
   const handleUpdateDeparture = (value?: City) => {
     updateRoute({ ...route, departure: value });
   };
@@ -35,14 +40,25 @@ export function FlightRouteItem({ route, updateRoute, deleteRoute, index }: Flig
     <RouteItem>
       <span className="inline-block text-slate-900">Route {index + 1} : </span>
 
-      <CitySelect value={route.departure} onSelect={handleUpdateDeparture} />
+      <CityAutoComplete
+      // value={departure}
+      // onChange={(evt, city) => {
+      //   handleUpdateDeparture(city ?? undefined);
+      //   setDeparture(city);
+      // }}
+      />
 
       <Button onClick={handleSwapRoute} color="tetriary" iconOnly>
-        <ArrowPathIcon height={24} />
+        <ArrowPathRoundedSquareIcon height={24} />
       </Button>
 
-      <CitySelect value={route.arrival} onSelect={handleUpdateArrival} />
-      {/* <CityAutoComplete value={route.arrival} onSelect={handleUpdateArrival} /> */}
+      <CityAutoComplete
+      // value={arrival}
+      // onChange={(e, city) => {
+      //   handleUpdateArrival(city ?? undefined);
+      //   setArrival(city);
+      // }}
+      />
 
       <DatePicker value={route.departureDate} onChange={handleUpdateDate} />
 

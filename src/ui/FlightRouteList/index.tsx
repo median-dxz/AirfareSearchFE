@@ -13,7 +13,7 @@ export default function FlightRouteList() {
 
   return (
     <Box id="flight-route-group" className="px-6 pb-4 items-center" stack>
-      <ul className="space-y-2 mb-2">
+      <ul className="w-full space-y-2 mb-2">
         {payload.routes.map((route, index) => (
           <FlightRouteItem
             key={route.id}

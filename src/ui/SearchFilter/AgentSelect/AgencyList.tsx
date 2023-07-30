@@ -15,7 +15,7 @@ export const AgencyList = forwardRef<HTMLUListElement>(function AgentList(props,
 
 export function ListItem() {
   return (
-    <li className="flex w-full items-center justify-between px-4 py-1 text-sm text-secondary-900 hover:bg-secondary-50">
+    <li className="flex w-full items-center justify-between px-4 py-1 text-sm text-secondary-900 hover:bg-blue-50">
       <Box>
         icon <span>代理商</span>
       </Box>
