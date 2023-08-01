@@ -16,7 +16,7 @@ export function PeopleLimit() {
       buttonContent={
         <>
           <UsersIcon className="flex-none w-5" />
-          <span>人数: {people}</span>
+          <p>人数: {people}</p>
         </>
       }
     >

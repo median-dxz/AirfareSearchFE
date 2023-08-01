@@ -1,3 +1,5 @@
+"use client";
+
 import { FlightItem } from "@/components/Result/FlightItem";
 import { Filght } from "@/utils/type";
 import dayjs from "dayjs";

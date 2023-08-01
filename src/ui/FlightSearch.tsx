@@ -1,4 +1,5 @@
 "use client";
+
 import Box from "@/components/Box";
 import Loading from "@/components/Loading";
 
@@ -21,14 +22,12 @@ const FlightRouteList = dynamic(() => import("@/ui/FlightRouteList"), {
 
 export default function FlightSearch() {
   return (
-    <Box id="search-form" className="container mx-auto my-[-3rem] items-center space-y-2 pb-4" stack>
-      <SearchPayloadProvider>
-        <Box className="min-h-[4rem] bg-white rounded drop-shadow-lg mb-4" stack>
-          <SearchFilter />
-          <FlightRouteList />
-        </Box>
-        <SearchButton />
-      </SearchPayloadProvider>
-    </Box>
+    <SearchPayloadProvider>
+      <Box className="min-h-[4rem] bg-white rounded drop-shadow-lg mb-4" stack>
+        <SearchFilter />
+        <FlightRouteList />
+      </Box>
+      <SearchButton />
+    </SearchPayloadProvider>
   );
 }

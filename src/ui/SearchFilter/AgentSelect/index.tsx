@@ -15,9 +15,7 @@ export function AgencySelect() {
       buttonContent={
         <>
           <TicketIcon className="flex-none w-5" />
-          <span className="overflow-hidden text-ellipsis">
-            代理人: {agencies.length ? agencies.join(", ") : "全部"}
-          </span>
+          <p className="overflow-hidden text-ellipsis">代理人: {agencies.length ? agencies.join(", ") : "全部"}</p>
         </>
       }
     >

@@ -19,7 +19,7 @@ export function ResultsLimit() {
       buttonContent={
         <>
           <QueueListIcon className="flex-none w-5" />
-          <span>最大结果数: {maxResults}</span>
+          <p>最大结果数: {maxResults}</p>
         </>
       }
     >

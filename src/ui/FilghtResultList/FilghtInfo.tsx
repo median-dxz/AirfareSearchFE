@@ -4,7 +4,7 @@ import { Cabin } from "@/utils/type";
 import CalendarIcon from "@heroicons/react/24/outline/CalendarIcon";
 
 const InfoLabel = ({ children }: React.PropsWithChildren) => {
-  return <div className="flex items-center w-fit whitespace-nowrap text-primary-500">{children}</div>;
+  return <p className="flex items-center w-fit whitespace-nowrap text-primary-500">{children}</p>;
 };
 
 export function FilghtInfo({ cabins, departureDate }: { cabins: Cabin[]; departureDate: string }) {

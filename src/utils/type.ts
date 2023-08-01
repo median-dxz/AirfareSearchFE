@@ -1,5 +1,10 @@
+export interface SearchResult {
+  data: FlightResult[];
+  time: number; // ms
+}
+
 export interface FlightResult {
-  filghts: Filght[];
+  flights: Filght[];
   agencies: string[];
   price: number;
 }

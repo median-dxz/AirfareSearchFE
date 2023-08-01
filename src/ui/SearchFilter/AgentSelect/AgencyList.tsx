@@ -37,7 +37,7 @@ export function ListItem({ agency, deleteAgency }: ListItemProps) {
     <li className="flex w-full items-center justify-between px-4 py-1 text-sm text-secondary-900 hover:bg-blue-50">
       <Box className="items-center space-x-2">
         <GlobeAltIcon className="flex-none w-5" />
-        <span className="inline-block text-base">{agency}</span>
+        <p className="text-base">{agency}</p>
       </Box>
       <Button
         color="tetriary"

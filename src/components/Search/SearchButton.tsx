@@ -1,3 +1,5 @@
+"use client"
+
 import Button from "@/components/Button";
 import { useSearchPayload } from "@/store/SearchPayload";
 import { vaildateSearchPayload } from "@/store/vaildateSearchPayload";
