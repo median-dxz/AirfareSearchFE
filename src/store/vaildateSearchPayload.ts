@@ -13,4 +13,7 @@ export function vaildateSearchPayload(payload: SeachPayloadStore) {
       throw new Error("后面行程的出发日期不能小于之前的行程");
     }
   }
+  if (payload.routes.length === 0) {
+    throw new Error("未添加任何航程");
+  }
 }
