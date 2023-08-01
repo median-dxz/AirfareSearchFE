@@ -5,49 +5,56 @@ import { Datepicker, Input, initTE } from "tw-elements";
 interface DatePickerProps {
   value?: Date;
   onChange?(value?: Date): void;
+  minDate?: Date;
 }
 
-export default function DatePicker({ value, onChange }: DatePickerProps) {
+export default function DatePicker({ value, onChange, minDate }: DatePickerProps) {
   const ref = React.useRef(null);
+  const inited = React.useRef(false);
 
   React.useEffect(() => {
-    initTE({ Datepicker, Input });
-    const ins = Datepicker.getInstance(ref.current);
-    ins.options.title = "选择日期";
-    ins.options.monthsFull = [
-      "一月",
-      "二月",
-      "三月",
-      "四月",
-      "五月",
-      "六月",
-      "七月",
-      "八月",
-      "九月",
-      "十月",
-      "十一月",
-      "十二月",
-    ];
-    ins.options.weekdaysFull = ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"];
-    ins.options.monthsShort = ["1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月"];
-    ins.options.weekdaysShort = [...ins.options.weekdaysFull];
-    ins.options.weekdaysNarrow = ["日", "一", "二", "三", "四", "五", "六"];
-    // ins.options.okBtnText = "确认";
-    // ins.options.clearBtnText = "清除";
-    ins.options.cancelBtnText = "取消";
-    ins.options.disablePast = true;
-    ins.options.min = dayjs().toDate();
-    ins.options.max = dayjs().add(1, "year").toDate();
-    ins.options.removeOkBtn = true;
-    ins.options.confirmDateOnSelect = true;
-    ins.options.removeClearBtn = true;
+    if (!inited.current) {
+      initTE({ Datepicker, Input });
+      const ins = Datepicker.getInstance(ref.current);
+      ins.options.title = "选择日期";
+      ins.options.monthsFull = [
+        "一月",
+        "二月",
+        "三月",
+        "四月",
+        "五月",
+        "六月",
+        "七月",
+        "八月",
+        "九月",
+        "十月",
+        "十一月",
+        "十二月",
+      ];
+      ins.options.weekdaysFull = ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"];
+      ins.options.monthsShort = ["1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月"];
+      ins.options.weekdaysShort = [...ins.options.weekdaysFull];
+      ins.options.weekdaysNarrow = ["日", "一", "二", "三", "四", "五", "六"];
+      // ins.options.okBtnText = "确认";
+      // ins.options.clearBtnText = "清除";
+      ins.options.cancelBtnText = "取消";
+      ins.options.disablePast = true;
+      ins.options.removeOkBtn = true;
+      ins.options.confirmDateOnSelect = true;
+      ins.options.removeClearBtn = true;
+      inited.current = true;
+    } else {
+      const ins = Datepicker.getInstance(ref.current);
+      ins.options.min = minDate ?? dayjs().toDate();
+      ins.options.max = dayjs().add(1, "year").toDate();
 
-    const confirmDate = ins._confirmSelection.bind(ins);
-    ins._confirmSelection = function (date?: Date) {
-      confirmDate(date);
-      onChange?.(date);
-    };
-  }, [onChange]);
+      const confirmDate = ins._confirmSelection.bind(ins);
+      ins._confirmSelection = function (date?: Date) {
+        confirmDate(date);
+        onChange?.(date);
+      };
+    }
+  }, [onChange, minDate]);
 
   const dateInputId = useId();
 

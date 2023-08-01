@@ -3,6 +3,7 @@ import { useSearchPayload } from "@/store/SearchPayload";
 import { SeachRoute } from "@/utils/type";
 import PlusIcon from "@heroicons/react/24/solid/PlusIcon";
 import React from "react";
+import Swal from "sweetalert2";
 
 let nextId = 0;
 
@@ -17,10 +18,14 @@ export function NewRouteButton() {
   const [payload, dispatch] = useSearchPayload();
 
   const handleClick: React.MouseEventHandler<HTMLButtonElement> = (evt) => {
-    dispatch({
-      type: "addRoute",
-      data: getEmptyRoute(),
-    });
+    if (payload.routes.length < 8) {
+      dispatch({
+        type: "addRoute",
+        data: getEmptyRoute(),
+      });
+    } else {
+      Swal.fire({ title: "最多只支持添加8段行程", icon: "info" });
+    }
   };
 
   return (

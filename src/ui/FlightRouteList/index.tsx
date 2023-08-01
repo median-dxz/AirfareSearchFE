@@ -20,6 +20,7 @@ export default function FlightRouteList() {
             index={index}
             route={route}
             updateRoute={handleSetRoute}
+            minDate={index > 0 ? payload.routes.at(index - 1)?.departureDate : undefined}
             deleteRoute={() => {
               dispatch({ type: "deleteRoute", data: route });
             }}

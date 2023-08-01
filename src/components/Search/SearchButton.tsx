@@ -1,15 +1,21 @@
 import Button from "@/components/Button";
 import { useSearchPayload } from "@/store/SearchPayload";
+import { vaildateSearchPayload } from "@/store/vaildateSearchPayload";
 import SearchIcon from "@heroicons/react/24/solid/MagnifyingGlassIcon";
 import { useRouter } from "next/navigation";
+import Swal from "sweetalert2";
 
 export default function SearchButton() {
   const router = useRouter();
   const [payload, dispatch] = useSearchPayload();
   const handleClick = () => {
-    // TODO: 表单校验
-    router.push(`/flights`);
-    console.log(payload);
+    try {
+      vaildateSearchPayload(payload);
+      router.push(`/flights`);
+      console.log(payload);
+    } catch (error) {
+      Swal.fire({ title: "表单不合法", text: String((error as Error).message), icon: "warning" });
+    }
   };
 
   return (

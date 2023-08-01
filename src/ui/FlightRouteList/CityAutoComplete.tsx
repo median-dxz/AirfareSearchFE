@@ -1,26 +1,27 @@
 import AutoComplete from "@/components/AutoComplete";
-import CityIcon from "@heroicons/react/24/outline/BuildingOffice2Icon";
 import { getCities } from "@/lib/getCities";
 import { City, stringifyCity } from "@/utils/type";
+import CityIcon from "@heroicons/react/24/outline/BuildingOffice2Icon";
 import clsx from "clsx";
-import React, { useState } from "react";
+import React from "react";
 import useSWR from "swr";
 
-export function CityAutoComplete() {
+interface CityAutoCompleteProps {
+  setCity: (city?: City) => void;
+  city?: City;
+}
+
+export function CityAutoComplete({ city, setCity }: CityAutoCompleteProps) {
   const { data } = useSWR("getCities", getCities, { fallbackData: [] as City[] });
-
-  const [v, sv] = useState<City | null>(null);
-
   return (
     <AutoComplete
       options={data}
       renderOption={StyledOption}
       getOptionLabel={(city) => stringifyCity(city)}
-      onChange={(e, v) => {
-        console.log(v);
-        sv(v);
+      onChange={(evt, city) => {
+        setCity(city ?? undefined);
       }}
-      value={v}
+      value={city ?? null}
       placeholder="选择城市"
     />
   );

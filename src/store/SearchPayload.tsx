@@ -3,7 +3,7 @@ import React, { PropsWithChildren } from "react";
 import { produce } from "immer";
 import { SeachRoute } from "@/utils/type";
 
-interface SeachPayloadStore {
+export interface SeachPayloadStore {
   people: number;
   maxResults: number;
   agencies: string[];
