@@ -1,11 +1,14 @@
 "use client";
 
+import React from "react";
+
 import Loading from "@/components/Loading";
+
+import type { SearchResult } from "@/utils/type";
 import { search } from "@/lib/search";
 import { useSearchPayload } from "@/store/SearchPayload";
-import type { SearchResult } from "@/utils/type";
-import React from "react";
-import { FilghtResultList } from "./FilghtResultList";
+
+import { FilghtResultList } from "@/ui/FilghtResultList";
 
 export default function FilghtResult() {
   const [result, setResult] = React.useState<SearchResult | null>(null);
@@ -23,7 +26,7 @@ export default function FilghtResult() {
       <>
         <FilghtResultList results={result?.data} />
         <div className="mt-2 p-6 bg-secondary-50 text-sm shadow-md">
-          <p>请求信息: {JSON.stringify(payload)}</p>
+          <p>请求信息: {JSON.stringify(payload, undefined, 4)}</p>
           <p>结果数: {result?.data.length}</p>
           <p>用时: {result?.time} ms</p>
         </div>

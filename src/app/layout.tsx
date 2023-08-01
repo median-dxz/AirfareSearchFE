@@ -1,4 +1,4 @@
-import Logo from "@/ui/Logo";
+import { SearchPayloadProvider } from "@/store/SearchPayload";
 import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
 import description from "./description.json";
@@ -22,7 +22,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <meta name="viewport" content="initial-scale=1, width=device-width" />
       </head>
       <body className={roboto.className}>
-       {children}
+        <SearchPayloadProvider> {children}</SearchPayloadProvider>
       </body>
     </html>
   );

@@ -1,10 +1,12 @@
-import AutoComplete from "@/components/AutoComplete";
-import { getCities } from "@/lib/getCities";
-import { City, stringifyCity } from "@/utils/type";
-import CityIcon from "@heroicons/react/24/outline/BuildingOffice2Icon";
 import clsx from "clsx";
 import React from "react";
 import useSWR from "swr";
+
+import AutoComplete from "@/components/AutoComplete";
+import { getCities } from "@/lib/getCities";
+import { type City, stringifyCity } from "@/utils/type";
+
+import CityIcon from "@heroicons/react/24/outline/BuildingOffice2Icon";
 
 interface CityAutoCompleteProps {
   setCity: (city?: City) => void;

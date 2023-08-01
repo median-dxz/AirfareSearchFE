@@ -1,10 +1,12 @@
+import { useState } from "react";
+import useSWR from "swr";
+
 import Box from "@/components/Box";
 import Button from "@/components/Button";
 import AutoComplete from "@/components/AutoComplete";
-import useSWR from "swr";
+
 import { getAngncies } from "@/lib/getAgencies";
 import { useSearchPayload } from "@/store/SearchPayload";
-import { useState } from "react";
 
 export function AgencySelectForm() {
   const { data } = useSWR("getAgencies", getAngncies, { fallbackData: [] as string[] });

@@ -1,9 +1,10 @@
+import React from "react";
+import Swal from "sweetalert2";
+
 import Button from "@/components/Button";
 import { useSearchPayload } from "@/store/SearchPayload";
 import { SeachRoute } from "@/utils/type";
 import PlusIcon from "@heroicons/react/24/solid/PlusIcon";
-import React from "react";
-import Swal from "sweetalert2";
 
 let nextId = 0;
 

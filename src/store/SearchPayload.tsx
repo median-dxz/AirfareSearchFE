@@ -87,6 +87,10 @@ export const SearchPayloadProvider = ({ children }: PropsWithChildren<object>) =
     routes: [],
   } as SeachPayloadStore);
 
+  React.useEffect(() => {
+    console.log("首次渲染store!");
+  }, []);
+
   return (
     <PayloadStore.Provider value={payload}>
       <PayloadDispatchStore.Provider value={dispatch}>{children}</PayloadDispatchStore.Provider>

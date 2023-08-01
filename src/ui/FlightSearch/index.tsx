@@ -1,14 +1,14 @@
 "use client";
 
+import dynamic from "next/dynamic";
+
 import Box from "@/components/Box";
 import Loading from "@/components/Loading";
 
-import SearchButton from "@/components/Search/SearchButton";
-import { SearchPayloadProvider } from "@/store/SearchPayload";
-
-import SearchFilter from "@/ui/SearchFilter";
-
-import dynamic from "next/dynamic";
+import { AgencySelect } from "@/ui/AgencySelect";
+import { PeopleLimit } from "./PeopleLimit";
+import { ResultsLimit } from "./ResultsLimit";
+import { SearchButton } from "./SearchButton";
 
 const FlightRouteList = dynamic(() => import("@/ui/FlightRouteList"), {
   ssr: false,
@@ -22,12 +22,16 @@ const FlightRouteList = dynamic(() => import("@/ui/FlightRouteList"), {
 
 export default function FlightSearch() {
   return (
-    <SearchPayloadProvider>
+    <>
       <Box className="min-h-[4rem] bg-white rounded drop-shadow-lg mb-4" stack>
-        <SearchFilter />
+        <Box id="flight-search-filter" stack className="p-2 overflow-hidden text-ellipsis sm:flex-row">
+          <PeopleLimit />
+          <ResultsLimit />
+          <AgencySelect />
+        </Box>
         <FlightRouteList />
       </Box>
       <SearchButton />
-    </SearchPayloadProvider>
+    </>
   );
 }

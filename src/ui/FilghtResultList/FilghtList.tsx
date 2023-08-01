@@ -1,8 +1,11 @@
 "use client";
 
-import { FlightItem } from "@/components/Result/FlightItem";
-import { Filght } from "@/utils/type";
 import dayjs from "dayjs";
+
+import { FlightItem } from "@/components/Result/FlightItem";
+
+import type { Filght } from "@/utils/type";
+
 import { FilghtInfo } from "./FilghtInfo";
 import { FlightNo } from "./FlightNo";
 import { FlightRoute } from "./FlightRoute";

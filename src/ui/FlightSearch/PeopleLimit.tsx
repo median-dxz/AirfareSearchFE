@@ -1,7 +1,7 @@
 import DropDownButton from "@/components/Search/DropDownButton";
 import RangeInput from "@/components/RangeInput";
 import UsersIcon from "@heroicons/react/24/solid/UsersIcon";
-import React from "react";
+
 import { useSearchPayload } from "@/store/SearchPayload";
 
 export function PeopleLimit() {

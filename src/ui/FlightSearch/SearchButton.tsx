@@ -1,13 +1,14 @@
-"use client"
+import Swal from "sweetalert2";
+
+import { useRouter } from "next/navigation";
 
 import Button from "@/components/Button";
 import { useSearchPayload } from "@/store/SearchPayload";
 import { vaildateSearchPayload } from "@/store/vaildateSearchPayload";
-import SearchIcon from "@heroicons/react/24/solid/MagnifyingGlassIcon";
-import { useRouter } from "next/navigation";
-import Swal from "sweetalert2";
 
-export default function SearchButton() {
+import SearchIcon from "@heroicons/react/24/solid/MagnifyingGlassIcon";
+
+export function SearchButton() {
   const router = useRouter();
   const [payload, dispatch] = useSearchPayload();
   const handleClick = () => {

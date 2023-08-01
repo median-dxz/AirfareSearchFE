@@ -1,6 +1,6 @@
 import descrition from "@/app/description.json";
 import Image from "next/image";
-import { TypedText } from "./TypedText";
+import { TypedText } from "@/components/TypedText";
 
 export default function Logo() {
   return (

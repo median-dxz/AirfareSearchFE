@@ -1,6 +1,8 @@
 import Box from "@/components/Box";
+
 import { FlightRouteItem } from "./FlightRouteItem";
 import { NewRouteButton } from "./NewRouteButton";
+
 import { useSearchPayload } from "@/store/SearchPayload";
 import { SeachRoute } from "@/utils/type";
 
