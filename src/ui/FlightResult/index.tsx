@@ -2,45 +2,51 @@
 
 import useSWR from "swr";
 
-import Loading from "@/components/Loading";
-import { useSearchPayload } from "@/store/SearchPayload";
-
-import { FilghtResultList } from "@/ui/FilghtResultList";
-import { SearchResult } from "@/utils/type";
-import { vaildateSearchPayload } from "@/store/vaildateSearchPayload";
 import { useRouter } from "next/navigation";
 
-export default function FilghtResult() {
+import { FlightResultList } from "@/ui/FlightResultList";
+
+import Loading from "@/components/Loading";
+import { useSearchPayload } from "@/store/SearchPayload";
+import { vaildateSearchPayload } from "@/store/vaildateSearchPayload";
+import { SearchResult } from "@/utils/type";
+import { useEffect } from "react";
+
+const fetchData = async (payload: string) => {
+  const res = await fetch("/api/search", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: payload,
+  });
+
+  if (res.status != 200) {
+    throw Error(`${res.status} ${res.statusText}`);
+  }
+
+  return res.json() as Promise<SearchResult>;
+};
+
+export default function FlightResult() {
   const [payload] = useSearchPayload();
   const router = useRouter();
-  let payloadValid = false;
+  let payloadValid: boolean;
 
   try {
     vaildateSearchPayload(payload);
     payloadValid = true;
   } catch (e) {
-    router.push("/");
+    payloadValid = false;
   }
 
-  const {
-    data: result,
-    isLoading,
-    error,
-  } = useSWR(payloadValid ? JSON.stringify(payload) : null, async (payload: string) => {
-    const res = await fetch("/api/search", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: payload,
-    });
-
-    if (res.status != 200) {
-      throw Error(`${res.status} ${res.statusText}`);
+  useEffect(() => {
+    if (payloadValid === false) {
+      router.push("/");
     }
+  }, [router, payloadValid]);
 
-    return res.json() as Promise<SearchResult>;
-  });
+  const { data: result, isLoading, error } = useSWR(payloadValid ? JSON.stringify(payload) : null, fetchData);
 
   if (error) {
     console.error(error);
@@ -69,7 +75,7 @@ export default function FilghtResult() {
 
   return (
     <>
-      <FilghtResultList results={result.data} />
+      <FlightResultList results={result.data} />
       <div className="mt-2 p-6 bg-secondary-50 text-sm shadow-md">
         <p>后端服务地址：{result.service}</p>
         <p>请求信息: {JSON.stringify(payload)}</p>

@@ -7,7 +7,7 @@ const InfoLabel = ({ children }: React.PropsWithChildren) => {
   return <p className="flex items-center w-fit whitespace-nowrap text-primary-500">{children}</p>;
 };
 
-export function FilghtInfo({ cabins, departureDate }: { cabins: Cabin[]; departureDate: string }) {
+export function FlightInfo({ cabins, departureDate }: { cabins: Cabin[]; departureDate: string }) {
   return (
     <Box className="flex sm:justify-end justify-between sm:w-fit space-x-4">
       <InfoLabel>

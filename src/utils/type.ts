@@ -5,12 +5,12 @@ export interface SearchResult {
 }
 
 export interface FlightResult {
-  flights: Filght[];
+  flights: Flight[];
   agencies: string[];
   price: number;
 }
 
-export interface Filght {
+export interface Flight {
   carrier: string;
   flightNo: string;
   departure: City;

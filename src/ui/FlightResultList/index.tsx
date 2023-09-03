@@ -1,6 +1,6 @@
 import { ResultItem } from "@/components/Result/ResultItem";
 import { FlightResult } from "@/utils/type";
-import { FilghtList } from "./FilghtList";
+import { FlightList } from "./FlightList";
 
 function ResultHeader({ agencies, price }: { agencies: string[]; price: number }) {
   return (
@@ -14,17 +14,17 @@ function ResultHeader({ agencies, price }: { agencies: string[]; price: number }
   );
 }
 
-interface FilghtResultListProps {
+interface FlightResultListProps {
   results: FlightResult[];
 }
 
-export function FilghtResultList({ results }: FilghtResultListProps) {
+export function FlightResultList({ results }: FlightResultListProps) {
   return (
     <ul className="w-full flex flex-col space-y-2">
       {results.map((result, index) => (
         <ResultItem key={index}>
           <ResultHeader agencies={result.agencies} price={result.price} />
-          <FilghtList filghts={result.flights} />
+          <FlightList flights={result.flights} />
         </ResultItem>
       ))}
     </ul>

@@ -4,20 +4,20 @@ import dayjs from "dayjs";
 
 import { FlightItem } from "@/components/Result/FlightItem";
 
-import type { Filght } from "@/utils/type";
+import type { Flight } from "@/utils/type";
 
-import { FilghtInfo } from "./FilghtInfo";
+import { FlightInfo } from "./FlightInfo";
 import { FlightNo } from "./FlightNo";
 import { FlightRoute } from "./FlightRoute";
 
-interface FilghtListProps {
-  filghts: Filght[];
+interface FlightListProps {
+  flights: Flight[];
 }
 
-export function FilghtList({ filghts }: FilghtListProps) {
+export function FlightList({ flights }: FlightListProps) {
   return (
     <ul className="flex flex-wrap space-y-1">
-      {filghts.map((flight, index) => (
+      {flights.map((flight, index) => (
         <FlightItem key={index}>
           <FlightNo flightNo={flight.flightNo} carrier={flight.carrier} />
           <FlightRoute
@@ -26,7 +26,7 @@ export function FilghtList({ filghts }: FilghtListProps) {
             arrivalTime={dayjs(flight.arrivalDatetime).format("hh:mm")}
             departureTime={dayjs(flight.departureDatetime).format("hh:mm")}
           />
-          <FilghtInfo cabins={flight.cabins} departureDate={dayjs(flight.departureDatetime).format("MM-DD")} />
+          <FlightInfo cabins={flight.cabins} departureDate={dayjs(flight.departureDatetime).format("MM-DD")} />
         </FlightItem>
       ))}
     </ul>
