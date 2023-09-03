@@ -1,8 +1,17 @@
-import type { SeachPayloadStore } from "@/store/SearchPayload";
 import type { SearchResult } from "@/utils/type";
+import { NextResponse } from "next/server";
 
-export async function search(payload: SeachPayloadStore) {
+export async function GET(request: Request) {
+  return NextResponse.redirect("/");
+}
+
+export async function POST(request: Request) {
+  const body = await request.json();
+
+  const { AS_SERVICE_URL: SERVICE_URL } = process.env;
+
   const data: SearchResult = {
+    service: String(SERVICE_URL),
     time: 2000,
     data: [
       {
@@ -83,5 +92,5 @@ export async function search(payload: SeachPayloadStore) {
     ],
   };
   await new Promise((res) => setTimeout(res, 2000));
-  return data;
+  return NextResponse.json(data);
 }

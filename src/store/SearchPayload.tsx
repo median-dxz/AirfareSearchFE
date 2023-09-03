@@ -88,7 +88,9 @@ export const SearchPayloadProvider = ({ children }: PropsWithChildren<object>) =
   } as SeachPayloadStore);
 
   React.useEffect(() => {
-    console.log("首次渲染store!");
+    if (process.env.NODE_ENV == "development") {
+      console.log("Global store created");
+    }
   }, []);
 
   return (

@@ -1,6 +1,7 @@
 export interface SearchResult {
   data: FlightResult[];
   time: number; // ms
+  service: string; // url
 }
 
 export interface FlightResult {

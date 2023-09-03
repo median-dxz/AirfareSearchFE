@@ -5,6 +5,9 @@ export function vaildateSearchPayload(payload: SeachPayloadStore) {
   if (payload.routes.some((route) => !(route.arrival && route.departure))) {
     throw new Error("城市不能为空");
   }
+  if (payload.routes.some((route) => route.arrival === route.departure)) {
+    throw new Error("出发城市和到达城市不能相同");
+  }
   if (payload.routes.some((route) => !route.departureDate)) {
     throw new Error("出发日期不能为空");
   }
