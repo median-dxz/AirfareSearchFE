@@ -77,7 +77,7 @@ export default function FlightResult() {
     <>
       <FlightResultList results={result.data} />
       <div className="mt-2 p-6 bg-secondary-50 text-sm shadow-md">
-        <p>后端服务地址：{result.service}</p>
+        <p>后端服务地址：{result.service_endpoint}</p>
         <p>请求信息: {JSON.stringify(payload)}</p>
         <p>原始返回: {JSON.stringify(result)}</p>
         <p>结果数: {result.data.length}</p>

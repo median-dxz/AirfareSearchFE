@@ -5,11 +5,12 @@ import Box from "@/components/Box";
 import Button from "@/components/Button";
 import AutoComplete from "@/components/AutoComplete";
 
-import { getAngncies } from "@/lib/getAgencies";
+import { getAgencies } from "@/lib/getAgencies";
 import { useSearchPayload } from "@/store/SearchPayload";
+import Swal from "sweetalert2";
 
 export function AgencySelectForm() {
-  const { data } = useSWR("getAgencies", getAngncies, { fallbackData: [] as string[] });
+  const { data } = useSWR("getAgencies", getAgencies, { fallbackData: [] as string[] });
   const [payload, dispatch] = useSearchPayload();
   const [value, setValue] = useState<string | null>(null);
 
@@ -28,8 +29,16 @@ export function AgencySelectForm() {
         color="tetriary"
         onClick={() => {
           if (value && !payload.agencies.includes(value)) {
-            dispatch({ type: "setAgencies", data: payload.agencies.concat(value) });
-            setValue(null);
+            if (payload.agencies.length < 20) {
+              dispatch({ type: "setAgencies", data: payload.agencies.concat(value) });
+              setValue(null);
+            } else {
+              Swal.fire({
+                icon: "error",
+                title: "代理人数量已达上限",
+                text: "最多只能选择 20 个代理人",
+              });
+            }
           }
         }}
       >

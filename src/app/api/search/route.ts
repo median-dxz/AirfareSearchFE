@@ -11,7 +11,7 @@ export async function POST(request: Request) {
   const { AS_SERVICE_URL: SERVICE_URL } = process.env;
 
   const data: SearchResult = {
-    service: String(SERVICE_URL),
+    service_endpoint: String(SERVICE_URL),
     time: 2000,
     data: [
       {

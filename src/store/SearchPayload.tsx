@@ -1,18 +1,11 @@
 "use client";
 import React, { PropsWithChildren } from "react";
 import { produce } from "immer";
-import { SeachRoute } from "@/utils/type";
-
-export interface SeachPayloadStore {
-  people: number;
-  maxResults: number;
-  agencies: string[];
-  routes: SeachRoute[];
-}
+import type { SeachRoute, SeachRequest } from "@/utils/type";
 
 type SearchPayloadAction = "setPeople" | "setAgencies" | "setMaxResults" | "addRoute" | "deleteRoute" | "updateRoute";
 
-const PayloadStore = React.createContext<SeachPayloadStore>({} as any);
+const PayloadStore = React.createContext<SeachRequest>({} as any);
 
 const PayloadDispatchStore = React.createContext<
   React.Dispatch<{
@@ -23,7 +16,7 @@ const PayloadDispatchStore = React.createContext<
 
 export const useSearchPayload = () => [React.useContext(PayloadStore), React.useContext(PayloadDispatchStore)] as const;
 
-function searchPayloadReducer(payload: SeachPayloadStore, action: { type: string; data: any }) {
+function searchPayloadReducer(payload: SeachRequest, action: { type: string; data: any }) {
   switch (action.type) {
     case "setPeople": {
       return produce(payload, (draft) => {
@@ -85,7 +78,7 @@ export const SearchPayloadProvider = ({ children }: PropsWithChildren<object>) =
     maxResults: 10,
     agencies: [],
     routes: [],
-  } as SeachPayloadStore);
+  } as SeachRequest);
 
   React.useEffect(() => {
     if (process.env.NODE_ENV == "development") {

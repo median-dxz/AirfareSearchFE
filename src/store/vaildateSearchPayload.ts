@@ -1,7 +1,7 @@
 "use client";
-import type { SeachPayloadStore } from "./SearchPayload";
+import type { SeachRequest } from "@/utils/type";
 
-export function vaildateSearchPayload(payload: SeachPayloadStore) {
+export function vaildateSearchPayload(payload: SeachRequest) {
   if (payload.routes.some((route) => !(route.arrival && route.departure))) {
     throw new Error("城市不能为空");
   }
@@ -18,5 +18,11 @@ export function vaildateSearchPayload(payload: SeachPayloadStore) {
   }
   if (payload.routes.length === 0) {
     throw new Error("未添加任何航程");
+  }
+  if (payload.agencies.length === 0) {
+    throw new Error("代理人不能为空, 请至少指定一个代理人");
+  }
+  if (payload.agencies.length > 20) {
+    throw new Error("代理人数量超过限制, 上限为 20 个");
   }
 }
