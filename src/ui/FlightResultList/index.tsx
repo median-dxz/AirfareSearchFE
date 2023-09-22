@@ -1,5 +1,5 @@
 import { ResultItem } from "@/components/Result/ResultItem";
-import { FlightResult } from "@/utils/type";
+import { SearchResult } from "@/utils/type";
 import { FlightList } from "./FlightList";
 
 function ResultHeader({ agencies, price }: { agencies: string[]; price: number }) {
@@ -15,7 +15,7 @@ function ResultHeader({ agencies, price }: { agencies: string[]; price: number }
 }
 
 interface FlightResultListProps {
-  results: FlightResult[];
+  results: SearchResult[];
 }
 
 export function FlightResultList({ results }: FlightResultListProps) {
