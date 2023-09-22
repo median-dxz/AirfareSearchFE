@@ -3,16 +3,17 @@ import Swal from "sweetalert2";
 
 import Button from "@/components/Button";
 import { useSearchPayload } from "@/store/SearchPayload";
-import { SeachRoute } from "@/utils/type";
+import type { SearchRoute } from "@/utils/type";
 import PlusIcon from "@heroicons/react/24/solid/PlusIcon";
+import dayjs from "dayjs";
 
 let nextId = 0;
 
 const getEmptyRoute = () => {
   return {
-    departureDate: new Date(),
+    departureDate: dayjs().format("YYYYMMDD"),
     id: nextId++,
-  } as SeachRoute;
+  } as SearchRoute;
 };
 
 export function NewRouteButton() {

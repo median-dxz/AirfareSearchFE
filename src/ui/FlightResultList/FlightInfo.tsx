@@ -1,6 +1,7 @@
 import Box from "@/components/Box";
 import { CabinIcon } from "@/components/Icon/Cabin";
 import { Cabin } from "@/utils/type";
+import { stringifyCabin } from "@/utils/type";
 import CalendarIcon from "@heroicons/react/24/outline/CalendarIcon";
 
 const InfoLabel = ({ children }: React.PropsWithChildren) => {
@@ -17,7 +18,7 @@ export function FlightInfo({ cabins, departureDate }: { cabins: Cabin[]; departu
 
       <InfoLabel>
         <CabinIcon className="w-6 mr-2" />
-        {cabins.join(", ")}
+        {cabins.map(stringifyCabin).join(", ")}
       </InfoLabel>
     </Box>
   );

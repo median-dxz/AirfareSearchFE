@@ -1,7 +1,10 @@
 import Button from "@/components/Button";
 import DatePicker from "@/components/DatePicker";
 import RouteItem from "@/components/Search/RouteItem";
-import { City, SeachRoute } from "@/utils/type";
+
+import type { City, SearchRoute } from "@/utils/type";
+import { DateFormatter } from "@/utils/type";
+import dayjs from "dayjs";
 
 import ArrowPathRoundedSquareIcon from "@heroicons/react/24/outline/ArrowPathRoundedSquareIcon";
 import TrashIcon from "@heroicons/react/24/outline/TrashIcon";
@@ -10,8 +13,8 @@ import { CityAutoComplete } from "./CityAutoComplete";
 import { useEffect } from "react";
 
 interface FlightRouteItemProps {
-  route: SeachRoute;
-  updateRoute: (route: SeachRoute) => void;
+  route: SearchRoute;
+  updateRoute: (route: SearchRoute) => void;
   deleteRoute: () => void;
   index: number;
   minDate?: Date;
@@ -19,8 +22,8 @@ interface FlightRouteItemProps {
 
 export function FlightRouteItem({ route, updateRoute, deleteRoute, index, minDate }: FlightRouteItemProps) {
   useEffect(() => {
-    if (minDate && route.departureDate && route.departureDate < minDate) {
-      updateRoute({ ...route, departureDate: minDate });
+    if (minDate && route.departureDate && DateFormatter(route.departureDate).isBefore(minDate)) {
+      updateRoute({ ...route, departureDate: dayjs(minDate).format("YYYYMMDD") });
     }
   }, [minDate, route, updateRoute]);
 
@@ -33,7 +36,7 @@ export function FlightRouteItem({ route, updateRoute, deleteRoute, index, minDat
   };
 
   const handleUpdateDate = (value: Date) => {
-    updateRoute({ ...route, departureDate: value });
+    updateRoute({ ...route, departureDate: dayjs(value).format("YYYYMMDD") });
   };
 
   const handleSwapRoute = () => {
@@ -52,7 +55,7 @@ export function FlightRouteItem({ route, updateRoute, deleteRoute, index, minDat
 
       <CityAutoComplete city={route.arrival} setCity={handleUpdateArrival} />
 
-      <DatePicker value={route.departureDate} onChange={handleUpdateDate} minDate={minDate} />
+      <DatePicker value={DateFormatter(route.departureDate).toDate()} onChange={handleUpdateDate} minDate={minDate} />
 
       <Button onClick={deleteRoute} color="secondary" iconOnly>
         <TrashIcon height={16} />

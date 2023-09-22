@@ -1,5 +1,6 @@
 import Box from "@/components/Box";
-import { City, stringifyCity } from "@/utils/type";
+import type { City } from "@/utils/type";
+import { stringifyCity } from "@/utils/type";
 
 const Spot = ({ time, city }: { time: string; city: string }) => {
   return (
@@ -16,16 +17,16 @@ export function FlightRoute({
   departureTime,
   arrivalTime,
 }: {
-  departure: City;
-  arrival: City;
+  departure?: City;
+  arrival?: City;
   departureTime: string;
   arrivalTime: string;
 }) {
   return (
     <Box className="items-center space-x-4 justify-center text-3xl mt-[-1rem] py-8">
-      <Spot city={stringifyCity(departure)} time={departureTime} />
+      <Spot city={departure ? stringifyCity(departure) : ""} time={departureTime} />
       <i className="w-[48px] h-0.5 bg-primary-400" />
-      <Spot city={stringifyCity(arrival)} time={arrivalTime} />
+      <Spot city={arrival ? stringifyCity(arrival) : ""} time={arrivalTime} />
     </Box>
   );
 }

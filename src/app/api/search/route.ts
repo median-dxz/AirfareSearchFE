@@ -1,18 +1,16 @@
-import { client, type SearchRequest } from "@/lib/grpcClient";
-import type { SearchResult } from "@/utils/type";
+import { client } from "@/lib/grpcClient";
 import { NextResponse } from "next/server";
 import dayjs from "dayjs";
 import RelativeTime from "dayjs/plugin/relativeTime";
-import customParseFormat from "dayjs/plugin/customParseFormat";
+
+import type { SearchRequest, SearchResponse } from "@/utils/type";
 
 dayjs.extend(RelativeTime);
-dayjs.extend(customParseFormat);
 
-export interface ApiSearchResponse {
+export type ApiSearchResponse = SearchResponse & {
   service_endpoint: string;
   time: string;
-  data: SearchResult[];
-}
+};
 
 export async function GET(request: Request) {
   const url = new URL(request.url);
@@ -37,14 +35,8 @@ export async function POST(request: Request) {
           const apiResponse: ApiSearchResponse = {
             service_endpoint: SERVICE_URL,
             time: dayjs(timeStart).fromNow(),
-            data: res.data as unknown as SearchResult[],
+            data: res.data,
           };
-          apiResponse.data.forEach((item) => {
-            item.flights.forEach((flight) => {
-              flight.arrivalDatetime = dayjs(flight.arrivalDatetime as unknown as string, "YYYYMMDDhhmm").toDate();
-              flight.departureDatetime = dayjs(flight.departureDatetime as unknown as string, "YYYYMMDDhhmm").toDate();
-            });
-          });
           resolve(apiResponse);
         }
         reject(err);

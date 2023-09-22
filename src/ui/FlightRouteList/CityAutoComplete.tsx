@@ -4,9 +4,10 @@ import useSWR from "swr";
 
 import AutoComplete from "@/components/AutoComplete";
 import { getCities } from "@/lib/getCities";
-import { type City, stringifyCity } from "@/utils/type";
+import { stringifyCity } from "@/utils/type";
 
 import CityIcon from "@heroicons/react/24/outline/BuildingOffice2Icon";
+import type { City } from "@/utils/type";
 
 interface CityAutoCompleteProps {
   setCity: (city?: City) => void;

@@ -4,13 +4,20 @@ import { FlightRouteItem } from "./FlightRouteItem";
 import { NewRouteButton } from "./NewRouteButton";
 
 import { useSearchPayload } from "@/store/SearchPayload";
-import { SeachRoute } from "@/utils/type";
+import type { SearchRoute } from "@/utils/type";
+import { DateFormatter } from "@/utils/type";
 
 export default function FlightRouteList() {
   const [payload, dispatch] = useSearchPayload();
 
-  const handleSetRoute = (route: SeachRoute) => {
+  const handleSetRoute = (route: SearchRoute) => {
     dispatch({ type: "updateRoute", data: route });
+  };
+
+  const getMinDate = (index: number) => {
+    if (index <= 0) return undefined;
+    const date = payload.routes.at(index - 1)?.departureDate;
+    return date ? DateFormatter(date).toDate() : undefined;
   };
 
   return (
@@ -22,7 +29,7 @@ export default function FlightRouteList() {
             index={index}
             route={route}
             updateRoute={handleSetRoute}
-            minDate={index > 0 ? payload.routes.at(index - 1)?.departureDate : undefined}
+            minDate={getMinDate(index)}
             deleteRoute={() => {
               dispatch({ type: "deleteRoute", data: route });
             }}

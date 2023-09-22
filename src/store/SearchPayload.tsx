@@ -1,11 +1,11 @@
 "use client";
 import React, { PropsWithChildren } from "react";
 import { produce } from "immer";
-import type { SeachRoute, SeachRequest } from "@/utils/type";
+import type { SearchRequest, SearchRoute } from "@/utils/type";
 
 type SearchPayloadAction = "setPeople" | "setAgencies" | "setMaxResults" | "addRoute" | "deleteRoute" | "updateRoute";
 
-const PayloadStore = React.createContext<SeachRequest>({} as any);
+const PayloadStore = React.createContext<SearchRequest>({} as any);
 
 const PayloadDispatchStore = React.createContext<
   React.Dispatch<{
@@ -16,7 +16,7 @@ const PayloadDispatchStore = React.createContext<
 
 export const useSearchPayload = () => [React.useContext(PayloadStore), React.useContext(PayloadDispatchStore)] as const;
 
-function searchPayloadReducer(payload: SeachRequest, action: { type: string; data: any }) {
+function searchPayloadReducer(payload: SearchRequest, action: { type: string; data: any }) {
   switch (action.type) {
     case "setPeople": {
       return produce(payload, (draft) => {
@@ -43,7 +43,7 @@ function searchPayloadReducer(payload: SeachRequest, action: { type: string; dat
     }
 
     case "deleteRoute": {
-      const { id } = action.data as SeachRoute;
+      const { id } = action.data as SearchRoute;
       if (id == undefined) {
         throw Error("route is unvalid");
       }
@@ -53,7 +53,7 @@ function searchPayloadReducer(payload: SeachRequest, action: { type: string; dat
     }
 
     case "updateRoute": {
-      const { id } = action.data as SeachRoute;
+      const { id } = action.data as SearchRoute;
       if (id == undefined) {
         throw Error("route is unvalid");
       }
@@ -78,7 +78,7 @@ export const SearchPayloadProvider = ({ children }: PropsWithChildren<object>) =
     maxResults: 10,
     agencies: [],
     routes: [],
-  } as SeachRequest);
+  } as SearchRequest);
 
   React.useEffect(() => {
     if (process.env.NODE_ENV == "development") {

@@ -3,7 +3,7 @@ syntax = "proto3";
 package AirfareSearch;
 
 service FlightsSearchService {
-  rpc search(SearchRequest) returns (SearchResult) {}
+  rpc search(SearchRequest) returns (SearchResponse) {}
 }
 
 message City {
@@ -33,7 +33,7 @@ message FlightResult {
   repeated string agencies = 3;
 }
 
-message SearchResult { repeated FlightResult data = 1; }
+message SearchResponse { repeated FlightResult data = 1; }
 
 message SearchRequest {
   int32 people = 1;

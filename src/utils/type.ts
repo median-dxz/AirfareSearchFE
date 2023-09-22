@@ -1,40 +1,34 @@
-// request
-export interface SeachRequest {
-  people: number;
-  maxResults: number;
-  agencies: string[];
-  routes: SeachRoute[];
+import type { City, Flight, FlightResult, SearchRequest, SearchResponse, SearchRoute } from "../protos/SearchRequest";
+
+export type { City, Flight, FlightResult, SearchRequest, SearchResponse, SearchRoute };
+
+export enum Cabin {
+  F = 0,
+  C = 1,
+  Y = 2,
+  UNRECOGNIZED = -1,
 }
 
-export interface SeachRoute {
-  id: number;
-  departure?: City;
-  arrival?: City;
-  departureDate?: Date;
-}
+import dayjs from "dayjs";
+import customParseFormat from "dayjs/plugin/customParseFormat";
 
-// response
-export interface SearchResult {
-  flights: Flight[];
-  agencies: string[];
-  price: number;
-}
-
-export interface Flight {
-  carrier: string;
-  flightNo: string;
-  departure: City;
-  arrival: City;
-  departureDatetime: Date;
-  arrivalDatetime: Date;
-  cabins: Cabin[];
-}
-
-export interface City {
-  code: string;
-  name: string;
-}
+dayjs.extend(customParseFormat);
 
 export const stringifyCity = (city: City) => `${city.name}(${city.code})`;
 
-export type Cabin = "F" | "C" | "Y";
+export const stringifyCabin = (cabin: Cabin) => {
+  switch (cabin) {
+    case Cabin.F:
+      return "F";
+    case Cabin.C:
+      return "C";
+    case Cabin.Y:
+      return "Y";
+    case Cabin.UNRECOGNIZED:
+      return String(cabin);
+  }
+};
+
+export const DateFormatter = (date: string | Date) => dayjs(date, "YYYYMMDD");
+
+export const DateTimeFormatter = (datetime: string | Date) => dayjs(datetime, "YYYYMMDDHHmm");

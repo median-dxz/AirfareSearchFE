@@ -72,7 +72,7 @@ export interface FlightResult {
   agencies: string[];
 }
 
-export interface SearchResult {
+export interface SearchResponse {
   data: FlightResult[];
 }
 
@@ -423,22 +423,22 @@ export const FlightResult = {
   },
 };
 
-function createBaseSearchResult(): SearchResult {
+function createBaseSearchResponse(): SearchResponse {
   return { data: [] };
 }
 
-export const SearchResult = {
-  encode(message: SearchResult, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+export const SearchResponse = {
+  encode(message: SearchResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     for (const v of message.data) {
       FlightResult.encode(v!, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): SearchResult {
+  decode(input: _m0.Reader | Uint8Array, length?: number): SearchResponse {
     const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
     let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseSearchResult();
+    const message = createBaseSearchResponse();
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
@@ -458,11 +458,11 @@ export const SearchResult = {
     return message;
   },
 
-  fromJSON(object: any): SearchResult {
+  fromJSON(object: any): SearchResponse {
     return { data: Array.isArray(object?.data) ? object.data.map((e: any) => FlightResult.fromJSON(e)) : [] };
   },
 
-  toJSON(message: SearchResult): unknown {
+  toJSON(message: SearchResponse): unknown {
     const obj: any = {};
     if (message.data?.length) {
       obj.data = message.data.map((e) => FlightResult.toJSON(e));
@@ -470,11 +470,11 @@ export const SearchResult = {
     return obj;
   },
 
-  create<I extends Exact<DeepPartial<SearchResult>, I>>(base?: I): SearchResult {
-    return SearchResult.fromPartial(base ?? ({} as any));
+  create<I extends Exact<DeepPartial<SearchResponse>, I>>(base?: I): SearchResponse {
+    return SearchResponse.fromPartial(base ?? ({} as any));
   },
-  fromPartial<I extends Exact<DeepPartial<SearchResult>, I>>(object: I): SearchResult {
-    const message = createBaseSearchResult();
+  fromPartial<I extends Exact<DeepPartial<SearchResponse>, I>>(object: I): SearchResponse {
+    const message = createBaseSearchResponse();
     message.data = object.data?.map((e) => FlightResult.fromPartial(e)) || [];
     return message;
   },
@@ -700,30 +700,30 @@ export const FlightsSearchServiceService = {
     responseStream: false,
     requestSerialize: (value: SearchRequest) => Buffer.from(SearchRequest.encode(value).finish()),
     requestDeserialize: (value: Buffer) => SearchRequest.decode(value),
-    responseSerialize: (value: SearchResult) => Buffer.from(SearchResult.encode(value).finish()),
-    responseDeserialize: (value: Buffer) => SearchResult.decode(value),
+    responseSerialize: (value: SearchResponse) => Buffer.from(SearchResponse.encode(value).finish()),
+    responseDeserialize: (value: Buffer) => SearchResponse.decode(value),
   },
 } as const;
 
 export interface FlightsSearchServiceServer extends UntypedServiceImplementation {
-  search: handleUnaryCall<SearchRequest, SearchResult>;
+  search: handleUnaryCall<SearchRequest, SearchResponse>;
 }
 
 export interface FlightsSearchServiceClient extends Client {
   search(
     request: SearchRequest,
-    callback: (error: ServiceError | null, response: SearchResult) => void,
+    callback: (error: ServiceError | null, response: SearchResponse) => void,
   ): ClientUnaryCall;
   search(
     request: SearchRequest,
     metadata: Metadata,
-    callback: (error: ServiceError | null, response: SearchResult) => void,
+    callback: (error: ServiceError | null, response: SearchResponse) => void,
   ): ClientUnaryCall;
   search(
     request: SearchRequest,
     metadata: Metadata,
     options: Partial<CallOptions>,
-    callback: (error: ServiceError | null, response: SearchResult) => void,
+    callback: (error: ServiceError | null, response: SearchResponse) => void,
   ): ClientUnaryCall;
 }
 
