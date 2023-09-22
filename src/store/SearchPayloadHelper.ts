@@ -1,9 +1,9 @@
 "use client";
-import type { SeachRequest } from "@/utils/type";
+import type { SearchRequest } from "@/utils/type";
 import dayjs from "dayjs";
 
 export const SearchPayloadHelper = {
-  vaildate(payload: SeachRequest) {
+  vaildate(payload: SearchRequest) {
     if (payload.routes.some((route) => !(route.arrival && route.departure))) {
       throw new Error("城市不能为空");
     }
@@ -28,13 +28,7 @@ export const SearchPayloadHelper = {
       throw new Error("代理人数量超过限制, 上限为 20 个");
     }
   },
-  serialize(payload: SeachRequest) {
-    const payloadCopy: SeachRequest = {
-      ...payload,
-      routes: payload.routes.map((item) => {
-        return { ...item, departureDate: dayjs(item.departureDate!).format("YYYYMMDD").toString() as unknown as Date };
-      }),
-    };
-    return JSON.stringify(payloadCopy);
+  serialize(payload: SearchRequest) {
+    return JSON.stringify(payload);
   },
 };
