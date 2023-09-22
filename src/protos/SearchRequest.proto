@@ -28,16 +28,12 @@ message Flight {
 }
 
 message FlightResult {
-  Flight flight = 1;
+  repeated Flight flights = 1;
   int32 price = 2;
   repeated string agencies = 3;
 }
 
-message SearchResult {
-  int32 time = 1;
-  int32 service_endpoint = 2;
-  repeated FlightResult data = 3;
-}
+message SearchResult { repeated FlightResult data = 1; }
 
 message SearchRequest {
   int32 people = 1;
@@ -50,5 +46,5 @@ message SearchRoute {
   int32 id = 1;
   City departure = 2;
   City arrival = 3;
-  string departureDate = 3;
+  string departureDate = 4;
 }

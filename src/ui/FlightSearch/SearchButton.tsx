@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 
 import Button from "@/components/Button";
 import { useSearchPayload } from "@/store/SearchPayload";
-import { vaildateSearchPayload } from "@/store/vaildateSearchPayload";
+import { SearchPayloadHelper } from "@/store/SearchPayloadHelper";
 
 import SearchIcon from "@heroicons/react/24/solid/MagnifyingGlassIcon";
 
@@ -13,7 +13,7 @@ export function SearchButton() {
   const [payload, dispatch] = useSearchPayload();
   const handleClick = () => {
     try {
-      vaildateSearchPayload(payload);
+      SearchPayloadHelper.vaildate(payload);
       router.push(`/flights`);
       console.log(payload);
     } catch (error) {

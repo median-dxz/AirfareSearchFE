@@ -15,12 +15,6 @@ export interface SeachRoute {
 
 // response
 export interface SearchResult {
-  data: FlightResult[];
-  time: number; // ms
-  service_endpoint: string; // url
-}
-
-export interface FlightResult {
   flights: Flight[];
   agencies: string[];
   price: number;

@@ -8,8 +8,8 @@ import { FlightResultList } from "@/ui/FlightResultList";
 
 import Loading from "@/components/Loading";
 import { useSearchPayload } from "@/store/SearchPayload";
-import { vaildateSearchPayload } from "@/store/vaildateSearchPayload";
-import { SearchResult } from "@/utils/type";
+import { SearchPayloadHelper } from "@/store/SearchPayloadHelper";
+import type { ApiSearchResponse } from "@/app/api/search/route";
 import { useEffect } from "react";
 
 const fetchData = async (payload: string) => {
@@ -22,10 +22,11 @@ const fetchData = async (payload: string) => {
   });
 
   if (res.status != 200) {
-    throw Error(`${res.status} ${res.statusText}`);
+    const errHint = await res.text();
+    throw Error(`${res.status} ${res.statusText}\n ${errHint}`);
   }
 
-  return res.json() as Promise<SearchResult>;
+  return res.json() as Promise<ApiSearchResponse>;
 };
 
 export default function FlightResult() {
@@ -34,7 +35,7 @@ export default function FlightResult() {
   let payloadValid: boolean;
 
   try {
-    vaildateSearchPayload(payload);
+    SearchPayloadHelper.vaildate(payload);
     payloadValid = true;
   } catch (e) {
     payloadValid = false;
@@ -46,11 +47,14 @@ export default function FlightResult() {
     }
   }, [router, payloadValid]);
 
-  const { data: result, isLoading, error } = useSWR(payloadValid ? JSON.stringify(payload) : null, fetchData);
+  const {
+    data: result,
+    isLoading,
+    error,
+  } = useSWR(payloadValid ? SearchPayloadHelper.serialize(payload) : null, fetchData);
 
   if (error) {
-    console.error(error);
-
+    // console.error(error);
     return (
       <div className="flex flex-col p-12 bg-white justify-center items-center shadow-md">
         <div className="mx-2">
