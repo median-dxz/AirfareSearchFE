@@ -34,7 +34,7 @@ export async function POST(request: Request) {
         } else {
           const apiResponse: ApiSearchResponse = {
             service_endpoint: SERVICE_URL,
-            time: dayjs(timeStart).fromNow(),
+            time: dayjs().diff(timeStart).toString(),
             data: res.data,
           };
           resolve(apiResponse);
@@ -44,84 +44,6 @@ export async function POST(request: Request) {
     });
     return new NextResponse(JSON.stringify(res), { headers: { "Content-Type": "application/json" } });
   } catch (error) {
-    return new NextResponse(JSON.stringify(error), { status: 500 });
+    return new NextResponse(JSON.stringify(error) + "\nRequest Origin:" + SERVICE_URL, { status: 500 });
   }
 }
-
-// [
-//   {
-//     agencies: ["BJS001", "CAN001"],
-//     flights: [
-//       {
-//         arrival: { code: "AAA", name: "中国" },
-//         departure: { code: "BBB", name: "中国" },
-//         arrivalDatetime: new Date(),
-//         departureDatetime: new Date(),
-//         cabins: ["F", "C"],
-//         carrier: "CA",
-//         flightNo: "0123",
-//       },
-//       {
-//         arrival: { code: "AAA", name: "中国" },
-//         departure: { code: "BBB", name: "中国" },
-//         arrivalDatetime: new Date(),
-//         departureDatetime: new Date(),
-//         cabins: ["F", "C"],
-//         carrier: "CA",
-//         flightNo: "0123",
-//       },
-//       {
-//         arrival: { code: "AAA", name: "中国" },
-//         departure: { code: "BBB", name: "中国" },
-//         arrivalDatetime: new Date(),
-//         departureDatetime: new Date(),
-//         cabins: ["F", "C"],
-//         carrier: "CA",
-//         flightNo: "0123",
-//       },
-//       {
-//         arrival: { code: "AAA", name: "中国" },
-//         departure: { code: "BBB", name: "中国" },
-//         arrivalDatetime: new Date(),
-//         departureDatetime: new Date(),
-//         cabins: ["F", "C"],
-//         carrier: "CA",
-//         flightNo: "0123",
-//       },
-//       {
-//         arrival: { code: "AAA", name: "中国" },
-//         departure: { code: "BBB", name: "中国" },
-//         arrivalDatetime: new Date(),
-//         departureDatetime: new Date(),
-//         cabins: ["F", "C"],
-//         carrier: "CA",
-//         flightNo: "0123",
-//       },
-//     ],
-//     price: 3200,
-//   },
-//   {
-//     agencies: ["BJS001", "CAN001"],
-//     flights: [
-//       {
-//         arrival: { code: "AAA", name: "中国" },
-//         departure: { code: "BBB", name: "中国" },
-//         arrivalDatetime: new Date(),
-//         departureDatetime: new Date(),
-//         cabins: ["F", "C"],
-//         carrier: "CA",
-//         flightNo: "0123",
-//       },
-//       {
-//         arrival: { code: "AAA", name: "中国" },
-//         departure: { code: "BBB", name: "中国" },
-//         arrivalDatetime: new Date(),
-//         departureDatetime: new Date(),
-//         cabins: ["F", "C"],
-//         carrier: "CA",
-//         flightNo: "0123",
-//       },
-//     ],
-//     price: 3200,
-//   },
-// ],
