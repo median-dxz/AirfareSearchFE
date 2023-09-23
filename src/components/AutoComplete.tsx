@@ -7,6 +7,7 @@ import { ReactElement, Ref, forwardRef } from "react";
 import muiStyles from "@/app/mui.module.css";
 
 import { forkRef } from "@/utils/forkRef";
+import { ScrollbarStyle } from "./ScrollbarStyle";
 
 type RenderOption<T> = React.FC<React.HTMLAttributes<HTMLLIElement> & { option?: T }>;
 
@@ -141,21 +142,7 @@ const StyledListbox = React.forwardRef<HTMLUListElement, React.HTMLAttributes<HT
   ref
 ) {
   const baseStyles = clsx(
-    [
-      "overflow-y-auto",
-      "[&::-webkit-scrollbar]:w-1",
-      "[&::-webkit-scrollbar]:h-1",
-      "[&::-webkit-scrollbar-button]:block",
-      "[&::-webkit-scrollbar-button]:h-0",
-      "[&::-webkit-scrollbar-button]:bg-transparent",
-      "[&::-webkit-scrollbar-track-piece]:bg-transparent",
-      "[&::-webkit-scrollbar-track-piece]:rounded-none",
-      "[&::-webkit-scrollbar-track-piece]:",
-      "[&::-webkit-scrollbar-track-piece]:rounded-l",
-      "[&::-webkit-scrollbar-thumb]:h-[50px]",
-      "[&::-webkit-scrollbar-thumb]:bg-[#999]",
-      "[&::-webkit-scrollbar-thumb]:rounded",
-    ],
+    ScrollbarStyle,
     ["max-h-[284px]", "border-none", "bg-white", "shadow-[0_4px_16px_rgba(69,88,115,.2)]", "rounded", "p-1", "my-1"],
     muiStyles["list-box"],
     className

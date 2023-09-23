@@ -34,9 +34,14 @@ export function AgencySelectForm() {
               setValue(null);
             } else {
               Swal.fire({
-                icon: "error",
+                icon: "warning",
                 title: "代理人数量已达上限",
                 text: "最多只能选择 20 个代理人",
+                toast: true,
+                position: "top",
+                timerProgressBar: true,
+                timer: 3000,
+                showConfirmButton: false,
               });
             }
           }

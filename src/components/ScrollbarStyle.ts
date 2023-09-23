@@ -1,0 +1,15 @@
+export const ScrollbarStyle = [
+  "overflow-y-auto",
+  "[&::-webkit-scrollbar]:w-1",
+  "[&::-webkit-scrollbar]:h-1",
+  "[&::-webkit-scrollbar-button]:block",
+  "[&::-webkit-scrollbar-button]:h-0",
+  "[&::-webkit-scrollbar-button]:bg-transparent",
+  "[&::-webkit-scrollbar-track-piece]:bg-transparent",
+  "[&::-webkit-scrollbar-track-piece]:rounded-none",
+  "[&::-webkit-scrollbar-track-piece]:",
+  "[&::-webkit-scrollbar-track-piece]:rounded-l",
+  "[&::-webkit-scrollbar-thumb]:h-[50px]",
+  "[&::-webkit-scrollbar-thumb]:bg-[#999]",
+  "[&::-webkit-scrollbar-thumb]:rounded",
+];

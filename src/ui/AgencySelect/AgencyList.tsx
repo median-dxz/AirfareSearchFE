@@ -1,12 +1,15 @@
 import { HTMLAttributes, forwardRef } from "react";
 
+import { useSearchPayload } from "@/store/SearchPayload";
+
 import Box from "@/components/Box";
 import Button from "@/components/Button";
+import { ScrollbarStyle } from "@/components/ScrollbarStyle";
 
-import MinusCircleIcon from "@heroicons/react/24/outline/MinusCircleIcon";
 import GlobeAltIcon from "@heroicons/react/24/outline/GlobeAltIcon";
+import MinusCircleIcon from "@heroicons/react/24/outline/MinusCircleIcon";
 
-import { useSearchPayload } from "@/store/SearchPayload";
+import clsx from "clsx";
 
 export const AgencyList = forwardRef<HTMLUListElement, HTMLAttributes<HTMLUListElement>>(function AgentList(
   { ...props },
@@ -14,8 +17,10 @@ export const AgencyList = forwardRef<HTMLUListElement, HTMLAttributes<HTMLUListE
 ) {
   const [payload, dispatch] = useSearchPayload();
   const { agencies } = payload;
+  const styles = clsx(ScrollbarStyle, "w-full", "max-h-[40vh]");
+  
   return (
-    <ul ref={ref} className="w-full" {...props}>
+    <ul ref={ref} className={styles} {...props}>
       {agencies.map((agency) => (
         <ListItem
           key={agency}
