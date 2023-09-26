@@ -32,6 +32,13 @@ export async function POST(request: Request) {
         if (err) {
           reject(err);
         } else {
+          console.log(
+            `[${dayjs().format(
+              "YYYY-MM-DD HH:mm:ss.SSS"
+            )}][api/search] Get Response: from: ${SERVICE_URL}\nRequest body:${JSON.stringify(
+              body
+            )}\nResponse:${JSON.stringify(res.data)}`
+          );
           const apiResponse: ApiSearchResponse = {
             service_endpoint: SERVICE_URL,
             time: dayjs().diff(timeStart).toString(),
