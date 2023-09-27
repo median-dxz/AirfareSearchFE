@@ -16,11 +16,15 @@ interface CityAutoCompleteProps {
 
 export function CityAutoComplete({ city, setCity }: CityAutoCompleteProps) {
   const data = [...useCities()].map(([code, name]) => ({ name, code } as City));
+
   return (
     <AutoComplete
       options={data}
       renderOption={StyledOption}
       getOptionLabel={(city) => stringifyCity(city)}
+      isOptionEqualToValue={(option, value) => {
+        return option.code === value.code;
+      }}
       onChange={(evt, city) => {
         setCity(city ?? undefined);
       }}

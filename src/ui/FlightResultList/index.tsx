@@ -25,7 +25,7 @@ export function FlightResultList({ results }: FlightResultListProps) {
   for (const item of results) {
     for (const flight of item.flights) {
       flight.departure && (flight.departure.name = String(cities.get(flight.departure.code)));
-      flight.arrival && (flight.arrival.name = String(cities.get(flight.arrival.name)));
+      flight.arrival && (flight.arrival.name = String(cities.get(flight.arrival.code)));
     }
   }
 
