@@ -1,7 +1,11 @@
 import { SearchPayloadProvider } from "@/store/SearchPayload";
+import { CityProvider } from "@/store/CitiesStore";
 import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
-import description from "./description.json";
+
+import description from "@/app/data/description.json";
+import cities from "@/app/data/cities.json";
+
 import "./globals.css";
 
 const roboto = Roboto({
@@ -22,7 +26,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <meta name="viewport" content="initial-scale=1, width=device-width" />
       </head>
       <body className={roboto.className}>
-        <SearchPayloadProvider> {children}</SearchPayloadProvider>
+        <CityProvider cities={new Map(cities.map((city) => [city.code, city.name]))}>
+          <SearchPayloadProvider>{children}</SearchPayloadProvider>
+        </CityProvider>
       </body>
     </html>
   );

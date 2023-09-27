@@ -1,16 +1,12 @@
 "use client";
 
-import useSWR from "swr";
-
-import { useRouter } from "next/navigation";
-
-import { FlightResultList } from "@/ui/FlightResultList";
-
 import Loading from "@/components/Loading";
 import { useSearchPayload } from "@/store/SearchPayload";
 import { SearchPayloadHelper } from "@/store/SearchPayloadHelper";
-import type { ApiSearchResponse } from "@/app/api/search/route";
+import { FlightResultList } from "@/ui/FlightResultList";
+import { useRouter } from "next/navigation";
 import { useEffect } from "react";
+import useSWR from "swr";
 
 const fetchData = async (payload: string) => {
   const res = await fetch("/api/search", {
@@ -26,7 +22,7 @@ const fetchData = async (payload: string) => {
     throw Error(`${res.status} ${res.statusText}\n ${errHint}`);
   }
 
-  return res.json() as Promise<ApiSearchResponse>;
+  return res.json();
 };
 
 export default function FlightResult() {
@@ -35,7 +31,7 @@ export default function FlightResult() {
   let payloadValid: boolean;
 
   try {
-    SearchPayloadHelper.vaildate(payload);
+    SearchPayloadHelper.validate(payload);
     payloadValid = true;
   } catch (e) {
     payloadValid = false;
@@ -51,7 +47,7 @@ export default function FlightResult() {
     data: result,
     isLoading,
     error,
-  } = useSWR(payloadValid ? SearchPayloadHelper.serialize(payload) : null, fetchData);
+  } = useSWR(payloadValid ? SearchPayloadHelper.serialize(payload) : null, fetchData, {});
 
   if (error) {
     // console.error(error);
@@ -60,7 +56,7 @@ export default function FlightResult() {
         <div className="mx-2">
           搜索失败:
           {error instanceof Error
-            ? error.stack?.split("\n").map((str, index) => {
+            ? error.message?.split("\n").map((str, index) => {
                 return <p key={index}>{str}</p>;
               })
             : String(error)}

@@ -1,4 +1,4 @@
-import descrition from "@/app/description.json";
+import descrition from "@/app/data/description.json";
 import Image from "next/image";
 import { TypedText } from "@/components/TypedText";
 

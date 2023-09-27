@@ -13,7 +13,7 @@ export function SearchButton() {
   const [payload, dispatch] = useSearchPayload();
   const handleClick = () => {
     try {
-      SearchPayloadHelper.vaildate(payload);
+      SearchPayloadHelper.validate(payload);
       router.push(`/flights`);
       console.log(payload);
     } catch (error) {

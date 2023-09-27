@@ -1,5 +1,89 @@
 [
     {
+        "name": "北京",
+        "code": "BJS"
+    },
+    {
+        "name": "上海",
+        "code": "SHA"
+    },
+    {
+        "name": "广州",
+        "code": "CAN"
+    },
+    {
+        "name": "深圳",
+        "code": "SZX"
+    },    
+    {
+        "name": "重庆",
+        "code": "CKG"
+    },
+    {
+        "name": "长沙",
+        "code": "CSX"
+    },
+    {
+        "name": "成都",
+        "code": "CTU"
+    },
+    {
+        "name": "合肥",
+        "code": "HFE"
+    },
+    {
+        "name": "杭州",
+        "code": "HGH"
+    },
+    {
+        "name": "武汉",
+        "code": "WUH"
+    },
+    {
+        "name": "西安",
+        "code": "SIA"
+    },
+    {
+        "name": "青岛",
+        "code": "TAO"
+    },
+    {
+        "name": "南京",
+        "code": "NKG"
+    },
+    {
+        "name": "厦门",
+        "code": "XMN"
+    },
+    {
+        "name": "昆明",
+        "code": "KMG"
+    },
+    {
+        "name": "大连",
+        "code": "DLC"
+    },
+    {
+        "name": "天津",
+        "code": "TSN"
+    },
+    {
+        "name": "郑州",
+        "code": "CGO"
+    },
+    {
+        "name": "三亚",
+        "code": "SYX"
+    },
+    {
+        "name": "福州",
+        "code": "FOC"
+    },
+    {
+        "name": "济南",
+        "code": "TNA"
+    },
+    {
         "name": "阿勒泰",
         "code": "AAT"
     },
@@ -54,10 +138,6 @@
     {
         "name": "北海",
         "code": "BHY"
-    },
-    {
-        "name": "北京",
-        "code": "BJS"
     },
     {
         "name": "北京(大兴国际机场)",
@@ -120,18 +200,6 @@
         "code": "CIH"
     },
     {
-        "name": "重庆",
-        "code": "CKG"
-    },
-    {
-        "name": "长沙",
-        "code": "CSX"
-    },
-    {
-        "name": "成都",
-        "code": "CTU"
-    },
-    {
         "name": "沧源",
         "code": "CWJ"
     },
@@ -162,10 +230,6 @@
     {
         "name": "迪庆",
         "code": "DIG"
-    },
-    {
-        "name": "大连",
-        "code": "DLC"
     },
     {
         "name": "大理",
@@ -204,10 +268,6 @@
         "code": "ERL"
     },
     {
-        "name": "福州",
-        "code": "FOC"
-    },
-    {
         "name": "阜阳",
         "code": "FUG"
     },
@@ -222,10 +282,6 @@
     {
         "name": "佛山",
         "code": "FUO"
-    },
-    {
-        "name": "广州",
-        "code": "CAN"
     },
     {
         "name": "果洛",
@@ -278,14 +334,6 @@
     {
         "name": "呼和浩特",
         "code": "HET"
-    },
-    {
-        "name": "合肥",
-        "code": "HFE"
-    },
-    {
-        "name": "杭州",
-        "code": "HGH"
     },
     {
         "name": "淮安",
@@ -400,10 +448,6 @@
         "code": "SWA"
     },
     {
-        "name": "济南",
-        "code": "TNA"
-    },
-    {
         "name": "荆州",
         "code": "SHS"
     },
@@ -422,10 +466,6 @@
     {
         "name": "凯里",
         "code": "KJH"
-    },
-    {
-        "name": "昆明",
-        "code": "KMG"
     },
     {
         "name": "库尔勒",
@@ -544,10 +584,6 @@
         "code": "NGB"
     },
     {
-        "name": "南京",
-        "code": "NKG"
-    },
-    {
         "name": "宁蒗",
         "code": "NLH"
     },
@@ -608,10 +644,6 @@
         "code": "NDG"
     },
     {
-        "name": "青岛",
-        "code": "TAO"
-    },
-    {
         "name": "日照",
         "code": "RIZ"
     },
@@ -632,10 +664,6 @@
         "code": "QSZ"
     },
     {
-        "name": "上海",
-        "code": "SHA"
-    },
-    {
         "name": "沈阳",
         "code": "SHE"
     },
@@ -654,14 +682,6 @@
     {
         "name": "三明",
         "code": "SQJ"
-    },
-    {
-        "name": "三亚",
-        "code": "SYX"
-    },
-    {
-        "name": "深圳",
-        "code": "SZX"
     },
     {
         "name": "十堰",
@@ -708,10 +728,6 @@
         "code": "TNH"
     },
     {
-        "name": "天津",
-        "code": "TSN"
-    },
-    {
         "name": "唐山",
         "code": "TVS"
     },
@@ -754,10 +770,6 @@
     {
         "name": "乌海",
         "code": "WUA"
-    },
-    {
-        "name": "武汉",
-        "code": "WUH"
     },
     {
         "name": "武夷山",
@@ -808,10 +820,6 @@
         "code": "NLT"
     },
     {
-        "name": "西安",
-        "code": "SIA"
-    },
-    {
         "name": "忻州",
         "code": "WUT"
     },
@@ -830,10 +838,6 @@
     {
         "name": "锡林浩特",
         "code": "XIL"
-    },
-    {
-        "name": "厦门",
-        "code": "XMN"
     },
     {
         "name": "西宁",
@@ -918,10 +922,6 @@
     {
         "name": "岳阳",
         "code": "YYA"
-    },
-    {
-        "name": "郑州",
-        "code": "CGO"
     },
     {
         "name": "张家界",

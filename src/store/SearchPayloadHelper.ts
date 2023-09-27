@@ -3,7 +3,7 @@ import type { SearchRequest } from "@/utils/type";
 import dayjs from "dayjs";
 
 export const SearchPayloadHelper = {
-  vaildate(payload: SearchRequest) {
+  validate(payload: SearchRequest) {
     if (payload.routes.some((route) => !(route.arrival && route.departure))) {
       throw new Error("城市不能为空");
     }

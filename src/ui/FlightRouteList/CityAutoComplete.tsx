@@ -1,13 +1,13 @@
 import clsx from "clsx";
 import React from "react";
-import useSWR from "swr";
 
 import AutoComplete from "@/components/AutoComplete";
-import { getCities } from "@/lib/getCities";
+
 import { stringifyCity } from "@/utils/type";
+import { useCities } from "@/store/CitiesStore";
+import type { City } from "@/utils/type";
 
 import CityIcon from "@heroicons/react/24/outline/BuildingOffice2Icon";
-import type { City } from "@/utils/type";
 
 interface CityAutoCompleteProps {
   setCity: (city?: City) => void;
@@ -15,7 +15,7 @@ interface CityAutoCompleteProps {
 }
 
 export function CityAutoComplete({ city, setCity }: CityAutoCompleteProps) {
-  const { data } = useSWR("getCities", getCities, { fallbackData: [] as City[] });
+  const data = [...useCities()].map(([code, name]) => ({ name, code } as City));
   return (
     <AutoComplete
       options={data}

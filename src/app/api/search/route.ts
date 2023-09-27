@@ -28,6 +28,11 @@ export async function POST(request: Request) {
 
   try {
     const res = await new Promise<ApiSearchResponse>((resolve, reject) => {
+      console.log(
+        `[${dayjs().format("YYYY-MM-DD HH:mm:ss.SSS")}][api/search]: Start Requset\nRequest body:${JSON.stringify(
+          body
+        )}`
+      );
       client.search(body, (err, res) => {
         if (err) {
           reject(err);
@@ -35,9 +40,7 @@ export async function POST(request: Request) {
           console.log(
             `[${dayjs().format(
               "YYYY-MM-DD HH:mm:ss.SSS"
-            )}][api/search] Get Response: from: ${SERVICE_URL}\nRequest body:${JSON.stringify(
-              body
-            )}\nResponse:${JSON.stringify(res.data)}`
+            )}][api/search] Get Response: from: ${SERVICE_URL}\nResponse:${JSON.stringify(res.data)}`
           );
           const apiResponse: ApiSearchResponse = {
             service_endpoint: SERVICE_URL,
@@ -49,8 +52,9 @@ export async function POST(request: Request) {
         reject(err);
       });
     });
+
     return new NextResponse(JSON.stringify(res), { headers: { "Content-Type": "application/json" } });
   } catch (error) {
-    return new NextResponse(JSON.stringify(error) + "\nRequest Origin:" + SERVICE_URL, { status: 500 });
+    return new NextResponse((error as Error).message + "\nRequest Origin:" + SERVICE_URL, { status: 500 });
   }
 }

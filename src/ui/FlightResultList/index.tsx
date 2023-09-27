@@ -1,6 +1,7 @@
 import type { FlightResult } from "@/utils/type";
 
 import { ResultItem } from "@/components/Result/ResultItem";
+import { useCities } from "@/store/CitiesStore";
 import { FlightList } from "./FlightList";
 
 function ResultHeader({ agencies, price }: { agencies: string[]; price: number }) {
@@ -20,6 +21,14 @@ interface FlightResultListProps {
 }
 
 export function FlightResultList({ results }: FlightResultListProps) {
+  const cities = useCities();
+  for (const item of results) {
+    for (const flight of item.flights) {
+      flight.departure && (flight.departure.name = String(cities.get(flight.departure.code)));
+      flight.arrival && (flight.arrival.name = String(cities.get(flight.arrival.name)));
+    }
+  }
+
   return (
     <ul className="w-full flex flex-col space-y-2">
       {results.map((result, index) => (
