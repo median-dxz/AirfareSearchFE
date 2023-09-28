@@ -27,12 +27,22 @@ export async function POST(request: Request) {
   }
 
   try {
+    await new Promise<void>((resolve, reject) => {
+      client.waitForReady(Date.now() + 5000, (err) => {
+        if (err) {
+          reject(err);
+        }
+        resolve();
+      });
+    });
+
     const res = await new Promise<ApiSearchResponse>((resolve, reject) => {
       console.log(
         `[${dayjs().format("YYYY-MM-DD HH:mm:ss.SSS")}][api/search]: Start Requset\nRequest body:${JSON.stringify(
           body
         )}`
       );
+
       client.search(body, (err, res) => {
         if (err) {
           reject(err);
