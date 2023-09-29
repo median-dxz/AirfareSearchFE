@@ -10,10 +10,10 @@ interface DatePickerProps {
 
 export default function DatePicker({ value, onChange, minDate }: DatePickerProps) {
   const ref = React.useRef(null);
-  const inited = React.useRef(false);
+  const [mounted, setMounted] = React.useState(false);
 
   React.useEffect(() => {
-    if (!inited.current) {
+    if (!mounted) {
       initTE({ Datepicker, Input });
       const ins = Datepicker.getInstance(ref.current);
       ins.options.title = "选择日期";
@@ -42,7 +42,7 @@ export default function DatePicker({ value, onChange, minDate }: DatePickerProps
       ins.options.removeOkBtn = true;
       ins.options.confirmDateOnSelect = true;
       ins.options.removeClearBtn = true;
-      inited.current = true;
+      setMounted(true);
     } else {
       const ins = Datepicker.getInstance(ref.current);
       ins.options.min = minDate ?? dayjs().toDate();
@@ -54,7 +54,7 @@ export default function DatePicker({ value, onChange, minDate }: DatePickerProps
         onChange?.(date);
       };
     }
-  }, [onChange, minDate]);
+  }, [onChange, minDate, mounted]);
 
   const dateInputId = useId();
 
